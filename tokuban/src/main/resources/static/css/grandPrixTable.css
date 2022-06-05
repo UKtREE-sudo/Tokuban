@@ -1,0 +1,46 @@
+tr {
+    height: 3rem;
+}
+
+th {
+    text-align: center;
+}
+
+td.bold {
+    font-weight: bold;
+}
+
+table.podium {
+    width: 100%;
+    text-align: center;
+}
+
+table.podium {
+    height: 6rem;
+}
+
+table.podium tr td{
+    width: calc(100% / 3);
+}
+
+table.podium tr td.fill {
+    background-color: beige;
+    text-align: center;
+}
+
+i.gold {
+    color: gold;
+}
+
+i.silver {
+    color: silver;
+}
+
+i.bronze {
+    color: brown;
+}
+
+img.podium {
+    height: 6rem;
+    width: auto;
+}

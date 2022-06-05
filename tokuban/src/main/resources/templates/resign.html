@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- 全ページ共通ここから -->
+
+  <!-- おまじない -->
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" th:href="@{/image/toku.png}">
+
+  <!-- bootstrap: CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- bootstrap: JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <!-- Fontawesome: JavaScript Bundle with Popper -->
+  <script src="https://kit.fontawesome.com/ba93ae2070.js" crossorigin="anonymous"></script>
+
+  <!-- Fontawesome -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <!-- JavaScript -->
+  <script th:src="@{/js/function fm_hasClass(e, c).js}"></script>
+
+	<link rel="stylesheet" th:href="@{/css/formTable.css}">
+
+	<meta name="author" content="周東">
+	<title>退会 | とくバン</title>
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+	<div th:replace="header :: header"></div>
+	<div class="container">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-9">
+					<main>
+						<form action="/resign">
+							<table>
+								<tr>
+									<td colspan="2">
+										<h1>本当に退会しますか？</h1>
+									</td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td colspan="2">退会すると実績の達成情報や所持しているクーポンを含む、すべての登録情報が失われてしまいます！</td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td><a href="/mypage-infoM" class="btn btn-warning">やっぱり退会しない</a></td>
+									<td class="right"><input type="submit" class="btn btn-secondary" value="退会する"></td>
+								</tr>
+							</table>
+						</form>
+					</main>
+				</div><!-- col-9(メインコンテンツ) -->
+				<div class="col-3">
+
+		<div th:replace="sidebar :: sidebar"></div>
+				</div><!-- col-3(右サイドバナー) -->
+
+			</div><!-- row -->
+		</div><!-- container -->
+
+		<div th:replace="footer :: footer"></div>
+</body>
+
+</html>

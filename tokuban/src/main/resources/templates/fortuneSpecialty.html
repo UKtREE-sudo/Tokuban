@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- 全ページ共通ここから -->
+
+  <!-- おまじない -->
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" th:href="@{/image/toku.png}">
+
+  <!-- bootstrap: CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- bootstrap: JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <!-- Fontawesome: JavaScript Bundle with Popper -->
+  <script src="https://kit.fontawesome.com/ba93ae2070.js" crossorigin="anonymous"></script>
+
+  <!-- Fontawesome -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <!-- JavaScript -->
+  <script th:src="@{/js/pageTop.js}"></script>
+<link rel="stylesheet" th:href="@{/css/uranai.css}">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/json.js"></script>
+<meta charset="UTF-8">
+<meta name="author" content="小野沢世">
+<title>ラッキー特産品 | とくバン</title>
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+	<div th:replace="header :: header"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-9">
+				<main>
+					<!-- ここ -->
+					<h1>～今日のラッキー特産品～</h1>
+					  <div class="chat bg-light p-4">
+						  <!-- スタート -->
+						  <div class="message d-flex flex-row align-items-start mb-4">
+							  <img th:src="@{/images/toku.png}" class="fas fa-user" width="60px" height="auto">
+							  <p class="message-text p-2 ms-2 mb-0 bg-warning">
+								  下の三つの質問に今日の気分で答えてね！！
+							  </p><!-- .message-text -->
+						  </div><!-- .message -->
+
+						  <!-- 質問1 -->
+						  <!-- とくさん -->
+						  <div class="message d-flex flex-row align-items-start mb-4">
+							  <img th:src="@{/images/toku.png}" class="fas fa-user" width="60px" height="auto">
+							  <p class="message-text p-2 ms-2 mb-0 bg-warning">
+								  今日の気分はワンちゃん？それともネコちゃん？
+							  </p><!-- .message-text -->
+						  </div><!-- .message -->
+						  <!-- ユーザー -->
+						  <div class="message d-flex flex-row-reverse align-items-start mb-4">
+							  <img th:src="@{/images/avatar/avatarLv{achievementLevel}.png(achievementLevel=${achievementLevel})}" class="fas fa-user" width="60px" height="auto">
+							  <p class="message-text p-2 me-2 mb-0 bg-info">
+								<a class="btn btn-primary" href="#" role="button">ワンちゃん</a>
+								  <a class="btn btn-primary" href="#" role="button">ネコちゃん!</a>
+							  </p><!-- .message-text -->
+						  </div><!-- .message -->
+
+						  <!-- 質問2 -->
+						  <!-- とくさん -->
+						  <div class="message d-flex flex-row align-items-start mb-4">
+							  <img th:src="@{/images/toku.png}" class="fas fa-user" width="60px" height="auto">
+							  <p class="message-text p-2 ms-2 mb-0 bg-warning">
+								  今度君の家でお酒飲まない？
+							  </p><!-- .message-text -->
+						  </div><!-- .message -->
+						  <!-- ユーザー -->
+						  <div class="message d-flex flex-row-reverse align-items-start mb-4">
+							  <img th:src="@{/images/avatar/avatarLv{achievementLevel}.png(achievementLevel=${achievementLevel})}" class="fas fa-user" width="60px" height="auto">
+							  <p class="message-text p-2 me-2 mb-0 bg-info">
+								  <a class="btn btn-primary" href="#" role="button">いいね!</a>
+								  <a class="btn btn-primary" href="#" role="button">ちょっと都合が…</a>
+							  </p><!-- .message-text -->
+						  </div><!-- .message -->
+
+						  <!-- 質問3 -->
+						  <!-- とくさん -->
+						  <div class="message d-flex flex-row align-items-start mb-4">
+							  <img th:src="@{/images/toku.png}" class="fas fa-user" width="60px" height="auto">
+							  <p class="message-text p-2 ms-2 mb-0 bg-warning">
+								  誰かとシェアする？それとも一人で楽しむ？
+							  </p><!-- .message-text -->
+						  </div><!-- .message -->
+						  <!-- ユーザー -->
+						  <div class="message d-flex flex-row-reverse align-items-start mb-4">
+							  <img th:src="@{/images/avatar/avatarLv{achievementLevel}.png(achievementLevel=${achievementLevel})}" class="fas fa-user" width="60px" height="auto">
+							  <p class="message-text p-2 me-2 mb-0 bg-info">
+								  <a class="btn btn-primary" href="#" role="button">シェアしたい!</a>
+								  <a class="btn btn-primary" href="#" role="button">一人で食べたい!</a>
+							  </p><!-- .message-text -->
+						  </div><!-- .message -->
+					  </div><!-- .chat -->
+
+					  <h2>あなたへのおすすめはこれ!!</h2>
+
+					  <div class="text-center">
+						  <form action="/merchDetail">
+							<input type="hidden" value="1" name="merchId">
+							  <img th:src="@{/images/merch/1/1.jpg}" class="rounded" alt="おすすめ">
+							  <p class="card-text">
+								  北海道　石屋製菓<br>
+								  白い恋人<br>
+								  4600円(45枚入り)<br>
+								  <button type="submit" class="btn btn-outline-dark">詳細をみる</button>
+								
+							  </p>
+							</form>
+					  </div>
+					<!-- ここ -->
+				  </main>
+			</div>
+			<!-- col-9(メインコンテンツ) -->
+
+			<div class="col-3">
+
+				<div th:replace="sidebar :: sidebar"></div>
+			</div>
+			<!-- col-3(右サイドバナー) -->
+
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+
+	<div th:replace="footer :: footer"></div>
+
+	<!-- ページTOPへ戻る -->
+    <p class="nav-fix-pos-pagetop">
+    <a href="#" class="pagetop">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </p>
+</body>
+
+</html>

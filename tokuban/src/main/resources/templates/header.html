@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<<<<<<< Updated upstream
+=======
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+  <header class="site-header"  th:fragment="header">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid p-3 mb-2 bg-warning text-dark header-container">
+        <a class="navbar-brand" href="/top"><img th:src="@{/images/logo.png}" width="auto" height="50"></a>
+
+        <!-- 幅が狭い時に展開する用だと思う -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- 検索関連 -->
+        <form action="/search" class="collapse navbar-collapse" id="navbarSupportedContent"
+         method="post" th:object="${Serchform}">
+
+
+          <!-- カテゴリ選択するやつ -->
+         <!-- <div class="cp_ipselect cp_sl01">
+            <select>
+              <option value="all" selected>すべて</option>
+              <option value="1">食品すべて</option>
+              <option value="2">　お菓子</option>
+              <option value="3">　麺類</option>
+              <option value="4">　お肉</option>
+              <option value="1">　海鮮</option>
+              <option value="2">　調味料</option>
+              <option value="3">　飲み物</option>
+              <option value="4">お酒すべて</option>
+              <option value="4">　ビール</option>
+              <option value="1">　焼酎</option>
+              <option value="2">　日本酒</option>
+              <option value="3">　ウィスキー</option>
+            </select>
+          </div> -->
+
+          <input class="form-control me-2" type="search" placeholder="検索" aria-label="検索"name="inputText">
+          <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+
+        <a class="cart" href="/seeCart">
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+
+        <!-- マイページ関連 -->
+        <div class="dropdown text-end" th:if="${achievementLevel}">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false"><img th:src="@{/images/avatar/avatarLv{achievementLevel}.png(achievementLevel=${achievementLevel})}" alt="avatar"
+              width="32" height="32">
+          </a>
+          <ul class="dropdown-menu left" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item"><i class="fas fa-ticket-alt"></i>　クーポン：3枚</a></li>
+            <li><a class="dropdown-item" href="/wip"><i class="far fa-envelope"></i>　おしらせ</a>
+            </li>
+            <li><a class="dropdown-item" href="/mypage-infoM"><i class="fas fa-user-cog"></i>　会員情報</a>
+            </li>
+            <li><a class="dropdown-item" href="/mypage-map"><i class="far fa-map"></i>　マップ・実績</a></li>
+            <li><a class="dropdown-item" href="/mypage-favoriteNine"><i class="fas fa-crown"></i>　だいすきナイン</a>
+            </li>
+            <li><a class="dropdown-item" href="/mypage-purchaseHistory"><i class="fas fa-history"></i>　購入履歴</a></li>
+            <li><a class="dropdown-item" href="/wip"><i class="fas fa-question-circle"></i>　ヘルプ</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/processLogout"><i class="fas fa-sign-out-alt"></i>　ログアウト</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 非ログイン状態のヘッダー -->
+        <div class="dropdown text-end" th:unless="${achievementLevel}">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-key"></i></a>
+          <ul class="dropdown-menu left" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/login"><i class="fas fa-sign-in-alt"></i>　ログイン</a></li>
+              <li><a class="dropdown-item" href="/register"><i class="fas fa-user-plus"></i>　新規会員登録</a>
+              </li>
+          </ul>
+      </div>
+
+      </div>
+    </nav>
+  </header>
+  <!-- ヘッダーここまで -->
+
+</body>
+</html>

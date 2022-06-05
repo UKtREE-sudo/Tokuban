@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- 全ページ共通ここから -->
+
+<!-- おまじない -->
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" th:href="@{/image/toku.png}">
+
+<!-- bootstrap: CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<!-- bootstrap: JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+	crossorigin="anonymous"></script>
+<!-- Fontawesome: JavaScript Bundle with Popper -->
+<script src="https://kit.fontawesome.com/ba93ae2070.js"
+	crossorigin="anonymous"></script>
+
+<!-- Fontawesome -->
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP"
+	rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<!-- JavaScript -->
+<script th:src="@{/js/pageTop.js}"></script>
+
+<link rel="stylesheet" th:href="@{/css/grandPrixTab.css}">
+<link rel="stylesheet" th:href="@{/css/grandPrixTable.css}">
+
+<!-- 個数選択 -->
+<link rel="stylesheet" th:href="@{/css/history.css}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+<script th:src="@{/js/spinner.js}"></script>
+
+
+<meta name="author" content="小河原・周東">
+
+<title>グランプリ | とくバン</title>
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+	<div th:replace="header :: header"></div>
+	<div class="container">
+		<div class="row">
+
+			<div class="col-9">
+				<main>
+					<div class="tabs">
+						<input id="hokkaido" type="radio" name="tab_item" checked>
+						<label class="tab_item mPlus" for="hokkaido">北海道</label> <input
+							id="tohoku" type="radio" name="tab_item"> <label
+							class="tab_item mPlus" for="tohoku">東北</label> <input id="kanto"
+							type="radio" name="tab_item"> <label
+							class="tab_item mPlus" for="kanto">関東</label> <input id="chubu"
+							type="radio" name="tab_item"> <label
+							class="tab_item mPlus" for="chubu">中部</label> <input id="kinki"
+							type="radio" name="tab_item"> <label
+							class="tab_item mPlus" for="kinki">近畿</label> <input id="chugoku"
+							type="radio" name="tab_item"> <label
+							class="tab_item mPlus" for="chugoku">中国</label> <input
+							id="shikoku" type="radio" name="tab_item"> <label
+							class="tab_item mPlus" for="shikoku">四国</label> <input
+							id="kyushu" type="radio" name="tab_item"> <label
+							class="tab_item mPlus" for="kyushu">九州</label>
+
+						<div class="tab_content" id="hokkaido_content">
+							<div class="tab_content_description">
+								<div class="shadow p-3 mb-5 bg-white rounded">
+									<h2 class="text-center">〜とくさんグランプリ北海道部門〜</h2>
+
+									<!-- 表彰台 -->
+									<table class="podium">
+										<tr>
+											<td></td>
+											<td>【1位】白い恋人</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>【2位】上川大雪 十勝 純米</td>
+											<td rowspan="2"><img th:src="@{/images/merch/1/1.jpg}"
+												class="podium"></td>
+											<!-- 1位 -->
+											<td></td>
+										</tr>
+										<tr>
+											<td rowspan="2"><img th:src="@{/images/merch/8/1.jpg}"
+												class="podium"></td>
+											<!-- 2位 -->
+											<!-- 1位の画像下 -->
+											<td>【3位】札幌ラーメン</td>
+										</tr>
+										<tr>
+											<!-- 2位の画像下 -->
+											<td class="fill"><i class="fas fa-medal gold fa-2x"></i></td>
+											<td rowspan="2"><img th:src="@{/images/merch/7/1.png}"
+												class="podium"></td>
+											<!-- 3位 -->
+										</tr>
+										<tr>
+											<td class="fill"><i class="fas fa-medal silver fa-2x"></i></td>
+											<td class="fill"></td>
+											<!-- 3位画像下 -->
+										</tr>
+										<tr>
+											<td class="fill"></td>
+											<td class="fill"></td>
+											<td class="fill"><i class="fas fa-medal bronze fa-2x"></i></td>
+										</tr>
+									</table>
+									<!-- 表彰台ここまで -->
+
+									<br>
+									<br>
+
+									<!-- ランキング表ここから -->
+									<table class="table align-middle">
+										<thead>
+											<tr>
+												<th scope="col" width="10%" class="mPlus">順位</th>
+												<td scope="col" class="mPlus bold">商品名</td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+											</tr>
+										</thead>
+										<tbody>
+											<!-- カート用のフォーム -->
+											<tr>
+												<th scope="row">1</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+											<!-- カート用ここまで -->
+											<tr class="top3">
+												<th scope="row">2</th>
+												<td>ふらのワイン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="7" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr class="top3">
+												<th scope="row">3</th>
+												<td>札幌ラーメン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="8" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">4</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">5</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">6</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">7</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">8</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">9</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">10</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- tab_content_description -->
+						</div>
+						<!-- tab_content(hokkaido) -->
+
+						<div class="tab_content" id="tohoku_content">
+							<div class="tab_content_description">
+								<div class="shadow p-3 mb-5 bg-white rounded">
+									<h2 class="text-center">〜とくさんグランプリ東北部門〜</h2>
+
+
+									<!-- 表彰台 -->
+									<table class="podium">
+										<tr>
+											<td></td>
+											<td>【1位】白い恋人</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>【2位】上川大雪 十勝 純米</td>
+											<td rowspan="2"><img th:src="@{/images/merch/1/1.jpg}"
+												class="podium"></td>
+											<!-- 1位 -->
+											<td></td>
+										</tr>
+										<tr>
+											<td rowspan="2"><img th:src="@{/images/merch/8/1.jpg}"
+												class="podium"></td>
+											<!-- 2位 -->
+											<!-- 1位の画像下 -->
+											<td>【3位】札幌ラーメン</td>
+										</tr>
+										<tr>
+											<!-- 2位の画像下 -->
+											<td class="fill"><i class="fas fa-medal gold fa-2x"></i></td>
+											<td rowspan="2"><img th:src="@{/images/merch/7/1.png}"
+												class="podium"></td>
+											<!-- 3位 -->
+										</tr>
+										<tr>
+											<td class="fill"><i class="fas fa-medal silver fa-2x"></i></td>
+											<td class="fill"></td>
+											<!-- 3位画像下 -->
+										</tr>
+										<tr>
+											<td class="fill"></td>
+											<td class="fill"></td>
+											<td class="fill"><i class="fas fa-medal bronze fa-2x"></i></td>
+										</tr>
+									</table>
+									<!-- 表彰台ここまで -->
+
+									<br>
+									<br>
+
+									<!-- ランキング表ここから -->
+									<table class="table align-middle">
+										<thead>
+											<tr>
+												<th scope="col" width="10%" class="mPlus">順位</th>
+												<td scope="col" class="mPlus bold">商品名</td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+											</tr>
+										</thead>
+										<tbody>
+											<!-- カート用のフォーム -->
+											<tr>
+												<th scope="row">1</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+											<!-- カート用ここまで -->
+											<tr class="top3">
+												<th scope="row">2</th>
+												<td>ふらのワイン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="7" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr class="top3">
+												<th scope="row">3</th>
+												<td>札幌ラーメン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="8" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">4</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">5</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">6</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">7</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">8</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">9</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">10</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- tab_content_description -->
+						</div>
+						<!-- tab_content(tohoku) -->
+
+						<div class="tab_content" id="kanto_content">
+							<div class="tab_content_description">
+								<div class="shadow p-3 mb-5 bg-white rounded">
+									<h2 class="text-center">〜とくさんグランプリ関東部門〜</h2>
+
+
+									<!-- 表彰台 -->
+									<table class="podium">
+										<tr>
+											<td></td>
+											<td>【1位】白い恋人</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>【2位】上川大雪 十勝 純米</td>
+											<td rowspan="2"><img th:src="@{/images/merch/1/1.jpg}"
+												class="podium"></td>
+											<!-- 1位 -->
+											<td></td>
+										</tr>
+										<tr>
+											<td rowspan="2"><img th:src="@{/images/merch/8/1.jpg}"
+												class="podium"></td>
+											<!-- 2位 -->
+											<!-- 1位の画像下 -->
+											<td>【3位】札幌ラーメン</td>
+										</tr>
+										<tr>
+											<!-- 2位の画像下 -->
+											<td class="fill"><i class="fas fa-medal gold fa-2x"></i></td>
+											<td rowspan="2"><img th:src="@{/images/merch/7/1.png}"
+												class="podium"></td>
+											<!-- 3位 -->
+										</tr>
+										<tr>
+											<td class="fill"><i class="fas fa-medal silver fa-2x"></i></td>
+											<td class="fill"></td>
+											<!-- 3位画像下 -->
+										</tr>
+										<tr>
+											<td class="fill"></td>
+											<td class="fill"></td>
+											<td class="fill"><i class="fas fa-medal bronze fa-2x"></i></td>
+										</tr>
+									</table>
+									<!-- 表彰台ここまで -->
+
+									<br>
+									<br>
+
+									<!-- ランキング表ここから -->
+									<table class="table align-middle">
+										<thead>
+											<tr>
+												<th scope="col" width="10%" class="mPlus">順位</th>
+												<td scope="col" class="mPlus bold">商品名</td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+											</tr>
+										</thead>
+										<tbody>
+											<!-- カート用のフォーム -->
+											<tr>
+												<th scope="row">1</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+											<!-- カート用ここまで -->
+											<tr class="top3">
+												<th scope="row">2</th>
+												<td>ふらのワイン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="7" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr class="top3">
+												<th scope="row">3</th>
+												<td>札幌ラーメン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="8" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">4</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">5</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">6</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">7</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">8</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">9</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">10</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- tab_content_description -->
+						</div>
+						<!-- tab_content(kanto) -->
+
+						<div class="tab_content" id="chubu_content">
+							<div class="tab_content_description">
+								<div class="shadow p-3 mb-5 bg-white rounded">
+									<h2 class="text-center">〜とくさんグランプリ中部部門〜</h2>
+
+
+									<!-- 表彰台 -->
+									<table class="podium">
+										<tr>
+											<td></td>
+											<td>【1位】白い恋人</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>【2位】上川大雪 十勝 純米</td>
+											<td rowspan="2"><img th:src="@{/images/merch/1/1.jpg}"
+												class="podium"></td>
+											<!-- 1位 -->
+											<td></td>
+										</tr>
+										<tr>
+											<td rowspan="2"><img th:src="@{/images/merch/8/1.jpg}"
+												class="podium"></td>
+											<!-- 2位 -->
+											<!-- 1位の画像下 -->
+											<td>【3位】札幌ラーメン</td>
+										</tr>
+										<tr>
+											<!-- 2位の画像下 -->
+											<td class="fill"><i class="fas fa-medal gold fa-2x"></i></td>
+											<td rowspan="2"><img th:src="@{/images/merch/7/1.png}"
+												class="podium"></td>
+											<!-- 3位 -->
+										</tr>
+										<tr>
+											<td class="fill"><i class="fas fa-medal silver fa-2x"></i></td>
+											<td class="fill"></td>
+											<!-- 3位画像下 -->
+										</tr>
+										<tr>
+											<td class="fill"></td>
+											<td class="fill"></td>
+											<td class="fill"><i class="fas fa-medal bronze fa-2x"></i></td>
+										</tr>
+									</table>
+									<!-- 表彰台ここまで -->
+
+									<br>
+									<br>
+
+									<!-- ランキング表ここから -->
+									<table class="table align-middle">
+										<thead>
+											<tr>
+												<th scope="col" width="10%" class="mPlus">順位</th>
+												<td scope="col" class="mPlus bold">商品名</td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+											</tr>
+										</thead>
+										<tbody>
+											<!-- カート用のフォーム -->
+											<tr>
+												<th scope="row">1</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+											<!-- カート用ここまで -->
+											<tr class="top3">
+												<th scope="row">2</th>
+												<td>ふらのワイン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="7" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr class="top3">
+												<th scope="row">3</th>
+												<td>札幌ラーメン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="8" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">4</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">5</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">6</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">7</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">8</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">9</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">10</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- tab_content_description -->
+						</div>
+						<!-- tab_content(chubu) -->
+
+						<div class="tab_content" id="kinki_content">
+							<div class="tab_content_description">
+								<div class="shadow p-3 mb-5 bg-white rounded">
+									<h2 class="text-center">〜とくさんグランプリ近畿部門〜</h2>
+
+
+									<!-- 表彰台 -->
+									<table class="podium">
+										<tr>
+											<td></td>
+											<td>【1位】白い恋人</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>【2位】上川大雪 十勝 純米</td>
+											<td rowspan="2"><img th:src="@{/images/merch/1/1.jpg}"
+												class="podium"></td>
+											<!-- 1位 -->
+											<td></td>
+										</tr>
+										<tr>
+											<td rowspan="2"><img th:src="@{/images/merch/8/1.jpg}"
+												class="podium"></td>
+											<!-- 2位 -->
+											<!-- 1位の画像下 -->
+											<td>【3位】札幌ラーメン</td>
+										</tr>
+										<tr>
+											<!-- 2位の画像下 -->
+											<td class="fill"><i class="fas fa-medal gold fa-2x"></i></td>
+											<td rowspan="2"><img th:src="@{/images/merch/7/1.png}"
+												class="podium"></td>
+											<!-- 3位 -->
+										</tr>
+										<tr>
+											<td class="fill"><i class="fas fa-medal silver fa-2x"></i></td>
+											<td class="fill"></td>
+											<!-- 3位画像下 -->
+										</tr>
+										<tr>
+											<td class="fill"></td>
+											<td class="fill"></td>
+											<td class="fill"><i class="fas fa-medal bronze fa-2x"></i></td>
+										</tr>
+									</table>
+									<!-- 表彰台ここまで -->
+
+									<br>
+									<br>
+
+									<!-- ランキング表ここから -->
+									<table class="table align-middle">
+										<thead>
+											<tr>
+												<th scope="col" width="10%" class="mPlus">順位</th>
+												<td scope="col" class="mPlus bold">商品名</td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+											</tr>
+										</thead>
+										<tbody>
+											<!-- カート用のフォーム -->
+											<tr>
+												<th scope="row">1</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+											<!-- カート用ここまで -->
+											<tr class="top3">
+												<th scope="row">2</th>
+												<td>ふらのワイン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="7" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr class="top3">
+												<th scope="row">3</th>
+												<td>札幌ラーメン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="8" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">4</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">5</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">6</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">7</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">8</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">9</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">10</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- tab_content_description -->
+						</div>
+						<!-- tab_content(kinki) -->
+
+						<div class="tab_content" id="chugoku_content">
+							<div class="tab_content_description">
+								<div class="shadow p-3 mb-5 bg-white rounded">
+									<h2 class="text-center">〜とくさんグランプリ中国部門〜</h2>
+
+									<!-- 表彰台 -->
+									<table class="podium">
+										<tr>
+											<td></td>
+											<td>【1位】白い恋人</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>【2位】上川大雪 十勝 純米</td>
+											<td rowspan="2"><img th:src="@{/images/merch/1/1.jpg}"
+												class="podium"></td>
+											<!-- 1位 -->
+											<td></td>
+										</tr>
+										<tr>
+											<td rowspan="2"><img th:src="@{/images/merch/8/1.jpg}"
+												class="podium"></td>
+											<!-- 2位 -->
+											<!-- 1位の画像下 -->
+											<td>【3位】札幌ラーメン</td>
+										</tr>
+										<tr>
+											<!-- 2位の画像下 -->
+											<td class="fill"><i class="fas fa-medal gold fa-2x"></i></td>
+											<td rowspan="2"><img th:src="@{/images/merch/7/1.png}"
+												class="podium"></td>
+											<!-- 3位 -->
+										</tr>
+										<tr>
+											<td class="fill"><i class="fas fa-medal silver fa-2x"></i></td>
+											<td class="fill"></td>
+											<!-- 3位画像下 -->
+										</tr>
+										<tr>
+											<td class="fill"></td>
+											<td class="fill"></td>
+											<td class="fill"><i class="fas fa-medal bronze fa-2x"></i></td>
+										</tr>
+									</table>
+									<!-- 表彰台ここまで -->
+
+									<br>
+									<br>
+
+									<!-- ランキング表ここから -->
+									<table class="table align-middle">
+										<thead>
+											<tr>
+												<th scope="col" width="10%" class="mPlus">順位</th>
+												<td scope="col" class="mPlus bold">商品名</td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+											</tr>
+										</thead>
+										<tbody>
+											<!-- カート用のフォーム -->
+											<tr>
+												<th scope="row">1</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+											<!-- カート用ここまで -->
+											<tr class="top3">
+												<th scope="row">2</th>
+												<td>ふらのワイン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="7" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr class="top3">
+												<th scope="row">3</th>
+												<td>札幌ラーメン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="8" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">4</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">5</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">6</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">7</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">8</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">9</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">10</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- tab_content_description -->
+						</div>
+						<!-- tab_content(chugoku) -->
+
+						<div class="tab_content" id="shikoku_content">
+							<div class="tab_content_description">
+								<div class="shadow p-3 mb-5 bg-white rounded">
+									<h2 class="text-center">〜とくさんグランプリ四国部門〜</h2>
+
+									<!-- 表彰台 -->
+									<table class="podium">
+										<tr>
+											<td></td>
+											<td>【1位】白い恋人</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>【2位】上川大雪 十勝 純米</td>
+											<td rowspan="2"><img th:src="@{/images/merch/1/1.jpg}"
+												class="podium"></td>
+											<!-- 1位 -->
+											<td></td>
+										</tr>
+										<tr>
+											<td rowspan="2"><img th:src="@{/images/merch/8/1.jpg}"
+												class="podium"></td>
+											<!-- 2位 -->
+											<!-- 1位の画像下 -->
+											<td>【3位】札幌ラーメン</td>
+										</tr>
+										<tr>
+											<!-- 2位の画像下 -->
+											<td class="fill"><i class="fas fa-medal gold fa-2x"></i></td>
+											<td rowspan="2"><img th:src="@{/images/merch/7/1.png}"
+												class="podium"></td>
+											<!-- 3位 -->
+										</tr>
+										<tr>
+											<td class="fill"><i class="fas fa-medal silver fa-2x"></i></td>
+											<td class="fill"></td>
+											<!-- 3位画像下 -->
+										</tr>
+										<tr>
+											<td class="fill"></td>
+											<td class="fill"></td>
+											<td class="fill"><i class="fas fa-medal bronze fa-2x"></i></td>
+										</tr>
+									</table>
+									<!-- 表彰台ここまで -->
+
+									<br>
+									<br>
+
+									<!-- ランキング表ここから -->
+									<table class="table align-middle">
+										<thead>
+											<tr>
+												<th scope="col" width="10%" class="mPlus">順位</th>
+												<td scope="col" class="mPlus bold">商品名</td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+											</tr>
+										</thead>
+										<tbody>
+											<!-- カート用のフォーム -->
+											<tr>
+												<th scope="row">1</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+											<!-- カート用ここまで -->
+											<tr class="top3">
+												<th scope="row">2</th>
+												<td>ふらのワイン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="7" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr class="top3">
+												<th scope="row">3</th>
+												<td>札幌ラーメン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="8" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">4</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">5</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">6</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">7</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">8</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">9</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">10</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- tab_content_description -->
+						</div>
+						<!-- tab_content(shikoku) -->
+
+						<div class="tab_content" id="kyushu_content">
+							<div class="tab_content_description">
+								<div class="shadow p-3 mb-5 bg-white rounded">
+									<h2 class="text-center">〜とくさんグランプリ九州部門〜</h2>
+
+									<!-- 表彰台 -->
+									<table class="podium">
+										<tr>
+											<td></td>
+											<td>【1位】白い恋人</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>【2位】上川大雪 十勝 純米</td>
+											<td rowspan="2"><img th:src="@{/images/merch/1/1.jpg}"
+												class="podium"></td>
+											<!-- 1位 -->
+											<td></td>
+										</tr>
+										<tr>
+											<td rowspan="2"><img th:src="@{/images/merch/8/1.jpg}"
+												class="podium"></td>
+											<!-- 2位 -->
+											<!-- 1位の画像下 -->
+											<td>【3位】札幌ラーメン</td>
+										</tr>
+										<tr>
+											<!-- 2位の画像下 -->
+											<td class="fill"><i class="fas fa-medal gold fa-2x"></i></td>
+											<td rowspan="2"><img th:src="@{/images/merch/7/1.jfif}"
+												class="podium"></td>
+											<!-- 3位 -->
+										</tr>
+										<tr>
+											<td class="fill"><i class="fas fa-medal silver fa-2x"></i></td>
+											<td class="fill"></td>
+											<!-- 3位画像下 -->
+										</tr>
+										<tr>
+											<td class="fill"></td>
+											<td class="fill"></td>
+											<td class="fill"><i class="fas fa-medal bronze fa-2x"></i></td>
+										</tr>
+									</table>
+									<!-- 表彰台ここまで -->
+
+									<br>
+									<br>
+
+									<!-- ランキング表ここから -->
+									<table class="table align-middle">
+										<thead>
+											<tr>
+												<th scope="col" width="10%" class="mPlus">順位</th>
+												<td scope="col" class="mPlus bold">商品名</td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+												<td scope="col"></td>
+											</tr>
+										</thead>
+										<tbody>
+											<!-- カート用のフォーム -->
+											<tr>
+												<th scope="row">1</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+											<!-- カート用ここまで -->
+											<tr class="top3">
+												<th scope="row">2</th>
+												<td>ふらのワイン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="7" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr class="top3">
+												<th scope="row">3</th>
+												<td>札幌ラーメン</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="8" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">4</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">5</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">6</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">7</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">8</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">9</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+											<tr>
+												<th scope="row">10</th>
+												<td>白い恋人</td>
+												<td><form action="/merchDetail">
+														<input type="hidden" value="1" name="merchId">
+														<button type="submit" class="btn btn-outline-dark">詳細</button>
+													</form></td>
+
+												<td class="spinner_area" style="width: 30%"><input
+													value="0" class="counter1" data-max="10" data-min="0"
+													style="width: 50%"> <input type="button" value="－"
+													class="btnspinner" data-cal="-1" data-target=".counter1">
+													<input type="button" value="＋" class="btnspinner"
+													data-cal="1" data-target=".counter1"> <input
+													type="hidden"></td>
+												<td><form action="/seeCart">
+														<button type="submit" class="btn btn-outline-dark">
+															<i class="fas fa-cart-plus"></i>
+														</button>
+													</form></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- tab_content_description -->
+						</div>
+						<!-- tab_content(kyushu) -->
+					</div>
+					<!-- tabs -->
+
+
+				</main>
+			</div>
+			<!-- col-9(メインコンテンツ) -->
+
+			<div class="col-3">
+
+				<div th:replace="sidebar :: sidebar"></div>
+			</div>
+			<!-- col-3(右サイドバナー) -->
+
+		</div>
+		<!-- row -->
+
+	</div>
+	<!-- container -->
+
+	<div th:replace="footer :: footer"></div>
+
+	<!-- ページTOPへ戻る -->
+    <p class="nav-fix-pos-pagetop">
+    <a href="#" class="pagetop">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </p>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- 全ページ共通ここから -->
+
+  <!-- おまじない -->
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" th:href="@{/image/toku.png}">
+
+  <!-- bootstrap: CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- bootstrap: JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <!-- Fontawesome: JavaScript Bundle with Popper -->
+  <script src="https://kit.fontawesome.com/ba93ae2070.js" crossorigin="anonymous"></script>
+
+  <!-- Fontawesome -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <!-- JavaScript -->
+  <script th:src="@{/js/pageTop.js}"></script>
+  <link rel="stylesheet" th:href="@{/css/delivery.css}">
+  <meta name="author" content="小河原">
+  <title>配送設定 | とくバン</title>
+
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+  <div th:include="header"></div>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-9">
+        <main>
+<form action="/moveDelivery" method="POST">
+
+          <!-- ここから -->
+          <h3>お届け方法を選択</h3>
+          <hr>
+          <h5>配達先住所：<a href="/selectAddress">変更</a></h5>
+          <div class="shadow-sm p-3 mb-5 bg-body rounded" th:object="${tAddress}">
+            <p class="address"><strong th:text="*{toName}"></strong></p>
+            <p class="address">
+              <span th:text="*{zipcode}"></span>
+              <span th:text="*{addressCore}"></span>
+              <span th:text="*{addressNumber}"></span>
+              <span th:text="*{addressBuilding}"></span>
+            </p>
+          </div>
+
+          <a class="to-coupon">
+            <button type="button" class="btn btn-warning" onclick="location.href='selectCoupon'">続ける</button>
+          </a>
+          <div class="delivery-option">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    <strong>通常配送 無料</strong>
+                    ※コンビニ・ATM・ネットバンキング・電子マネー払い可能
+                  </label>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    <strong>お届け日時指定便：</strong>6月21日(月), 18:00-20:00
+
+                    <button class="btn btn btn-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      配達日の変更
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">6月21日(月)</a></li>
+                      <li><a class="dropdown-item" href="#">6月22日(火)</a></li>
+                      <li><a class="dropdown-item" href="#">6月23日(水)</a></li>
+                      <li><a class="dropdown-item" href="#">6月24日(木)</a></li>
+                    </ul>
+
+                    <button class="btn btn btn-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      配達時間の変更
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">8:00-12:00</a></li>
+                      <li><a class="dropdown-item" href="#">14:00-16:00</a></li>
+                      <li><a class="dropdown-item" href="#">16:00-18:00</a></li>
+                      <li><a class="dropdown-item" href="#">18:00-20:00</a></li>
+                    </ul>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- ここまで -->
+          </form>
+        </main>
+      </div><!-- col-9(メインコンテンツ) -->
+
+      <div class="col-3">
+
+  <div th:replace="sidebar :: sidebar"></div>
+      </div><!-- col-3(右サイドバナー) -->
+
+    </div><!-- row -->
+  </div><!-- container -->
+
+  <div th:replace="footer :: footer"></div>
+
+  <!-- ページTOPへ戻る -->
+    <p class="nav-fix-pos-pagetop">
+    <a href="#" class="pagetop">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </p>
+</body>
+
+</html>

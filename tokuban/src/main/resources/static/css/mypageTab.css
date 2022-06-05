@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/*  マイページのタブとかの表示を設定するCSSです。
+    作成：周東 */
+
+.tabs {
+    padding-bottom: 40px;
+    background-color: #f8f8ff;
+    box-shadow: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    margin: 50px auto;
+}
+
+.tab_item {
+    width: calc(100% / 6);
+    height: 50px;
+    border: solid #f8f8ff;
+    border-collapse: collapse;
+    background-color: #313133;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #f8f8ff;
+    display: block;
+    float: left;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.disabled {
+    color: #7a7a80;
+    cursor: not-allowed;
+}
+
+input[name="tab_item"] {
+    display: none;
+}
+
+.tab_content {
+    display: none;
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+}
+
+#notice:checked~#notice_content, #infoM:checked~#infoM_content, #mapYear:checked~#mapYear_content, #favoriteNine:checked~#favoriteNine_content, #purchaseHistory:checked~#purchaseHistory_content, #help:checked~#help_content {
+    display: block;
+}
+
+.tabs input:checked+.tab_item {
+    background-color: #ffc107; /*bootstrapのwarningはこの色のはず*/
+    color: #000000;
+}
+
+.tab_content_description > *{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.baloon{
+    position:relative;
+    height:6em;
+    width: auto;
+    background:#FFFFFF;
+    padding: 0.5em;
+    text-align:center;
+    border:2px solid #000000;
+    color:#000000;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+}
+.baloon:after,.baloon:before{
+    border: solid transparent;
+    content:'';
+    height:0;
+    width:0;
+    pointer-events:none;
+    position:absolute;
+    right:100%;
+    top:51%;
+}
+.baloon:after{
+    border-color: rgba(255, 255, 255, 0);
+    border-top-width:10px;
+    border-bottom-width:10px;
+    border-left-width:10px;
+    border-right-width:10px;
+    margin-top: -10px;
+    border-right-color:#FFFFFF;
+}
+.baloon:before{
+    border-color: rgba(0, 0, 0, 0);
+    border-top-width:12px;
+    border-bottom-width:12px;
+    border-left-width:12px;
+    border-right-width:12px;
+    margin-top: -12px;
+    margin-right: 1.5px;
+    border-right-color:#000000;
+}
+
+img.avatar {
+    height: 10em;
+    width: auto;
+}

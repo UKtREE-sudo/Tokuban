@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- 全ページ共通ここから -->
+
+    <!-- おまじない -->
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" th:href="@{/image/toku.png}">
+
+    <!-- bootstrap: CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- bootstrap: JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <!-- Fontawesome: JavaScript Bundle with Popper -->
+    <script src="https://kit.fontawesome.com/ba93ae2070.js" crossorigin="anonymous"></script>
+
+    <!-- Fontawesome -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+    <script th:src="@{/js/function fm_hasClass(e, c).js}"></script>
+
+    <!-- インラインここから -->
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+$(function () {
+
+    var arySpinnerCtrl = [];
+    var spin_speed = 20; //変動スピード
+
+    //長押し押下時
+    $('.btnspinner').on('touchstart mousedown click', function (e) {
+        if (arySpinnerCtrl['interval']) return false;
+        var target = $(this).data('target');
+        arySpinnerCtrl['target'] = target;
+        arySpinnerCtrl['timestamp'] = e.timeStamp;
+        arySpinnerCtrl['cal'] = Number($(this).data('cal'));
+        //クリックは単一の処理に留める
+        if (e.type == 'click') {
+            spinnerCal();
+            arySpinnerCtrl = [];
+            return false;
+        }
+        //長押し時の処理
+        setTimeout(function () {
+            //インターバル未実行中 + 長押しのイベントタイプスタンプ一致時に計算処理
+            if (!arySpinnerCtrl['interval'] && arySpinnerCtrl['timestamp'] == e.timeStamp) {
+                arySpinnerCtrl['interval'] = setInterval(spinnerCal, spin_speed);
+            }
+        }, 500);
+    });
+
+    //長押し解除時 画面スクロールも解除に含む
+    $(document).on('touchend mouseup scroll', function (e) {
+        if (arySpinnerCtrl['interval']) {
+            clearInterval(arySpinnerCtrl['interval']);
+            arySpinnerCtrl = [];
+        }
+    });
+
+    //変動計算関数
+    function spinnerCal() {
+        var target = $(arySpinnerCtrl['target']);
+        var num = Number(target.val());
+        num = num + arySpinnerCtrl['cal'];
+        var max = /*[[${max}]]*/;
+        var min = /*[[${min}]]*/;
+        if (num > max) {
+            target.val(max);
+        } else if (min > num) {
+            target.val(min);
+        } else {
+            target.val(num);
+        }
+    }
+
+});
+/*]]>*/
+    </script>
+    <!-- インラインここまで -->
+    <meta name="author" content="小野沢世">
+    <title>クーポン | とくバン</title>
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+    <div th:replace="header :: header"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <main>
+                    <!--ここに各自のコードを書く-->
+
+                    <form action="settlement">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">お客様のクレジットカード</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <div class="row row-cols-auto">
+                                        <div class="col"><img th:src="@{/image/JCB.png}" class="JCB"></div>
+                                        <div class="col">
+                                            <p class="text-sm-start">JCB 末尾0000</p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-sm-start">TATUYA SATOU</p>
+                                        </div>
+                                        <div class="col">07/2022</div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <div class="row row-cols-auto">
+                                        <div class="col"><img th:src="@{/image/Visa.png}" class="Visa"></div>
+                                        <div class="col">
+                                            <p class="text-sm-start">Visa 末尾9999</p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-sm-start">佐藤　達也</p>
+                                        </div>
+                                        <div class="col">09/2023</div>
+                                    </div>
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <p style="text-align: center;margin-top: 70px;">
+                                <font size="3">クーポンご利用前</font>
+                                <font class="w-25 p-3" style="background-color: #eee;" size="3" id="before" th:text="${sum}"></font>
+                                <font size="3">円</font>
+                            </p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">クーポン利用</label>
+                            <div class="spinner_area">
+                                <input type="number" value="0" name="couponUsing" class="counter1" id = "coupon" >
+                                <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1"
+                                onclick="clickBtn2()">
+                                <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1"
+                                onclick="clickBtn1()">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p style="text-align: center;margin-top: 70px;">
+                                <font size="3">クーポン適用後</font>
+                                <font class="w-25 p-3" style="background-color: #eee;" size="3" id="after"th:text="${sum}">
+
+                                </font>
+                                <!-- クーポンの適応 -->
+                                <script th:inline="javascript">
+                                /*<![CDATA[*/
+            					var count = 0;
+            					max = /*[[${max}]]*/;
+            			        min = /*[[${min}]]*/;
+
+                                function clickBtn1(){
+                                	if(count < max){
+                                count = (count + 1);
+
+                                var price = /*[[${sum}]]*/;
+                                var couponCount = (500 * count);
+                                var afterPrice = price - couponCount;
+                                document.getElementById("after").innerHTML = afterPrice;
+                                	}
+                                }
+                                function clickBtn2(){
+                                	if(count > min){
+                                    count = (count - 1);
+
+                                    var price = /*[[${sum}]]*/;
+                                    var couponCount = (500 * count);
+                                    var afterPrice = price - couponCount;
+                                    document.getElementById("after").innerHTML = afterPrice;
+                                    }
+                                }
+                                /*]]>*/
+                                </script>
+                                <font size="3">円</font>
+                            </p>
+                            <!--情報送信用-->
+                            <input type="hidden" value="">
+                        </div>
+                        <br>
+                        <input type="submit" class="btn btn-warning" value="決済画面へ">
+                    </form>
+                </main>
+            </div><!-- col-9(メインコンテンツ) -->
+            <div class="col-3">
+
+                <div th:replace="sidebar :: sidebar"></div>
+            </div><!-- col-3(右サイドバナー) -->
+
+        </div><!-- row -->
+
+    </div><!-- container -->
+
+    <div th:replace="footer :: footer"></div>
+
+
+</body>
+
+</html>

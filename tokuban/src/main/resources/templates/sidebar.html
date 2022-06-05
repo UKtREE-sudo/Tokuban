@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- 全ページ共通ここから -->
+
+  <!-- おまじない -->
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" th:href="@{/images/toku.png}">
+
+  <!-- bootstrap: CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- bootstrap: JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <!-- Fontawesome: JavaScript Bundle with Popper -->
+  <script src="https://kit.fontawesome.com/ba93ae2070.js" crossorigin="anonymous"></script>
+
+  <!-- Fontawesome -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <!-- JavaScript -->
+  <script th:src="@{/js/pageTop.js}"></script>
+<meta charset="UTF-8">
+</head>
+<body>
+        <div class="sidebar" th:fragment="sidebar">
+          <!-- 右バナー1 -->
+          <div class="carousel slide banner" data-bs-ride="carousel">
+            <div class="carousel-inner shadow">
+              <div class="carousel-item active">
+                <a href="/wip"><img th:src="@{/images/banner/campaign_0616_gunma.png}" class="d-block w-100" alt="..."></a>
+              </div>
+
+            </div>
+          </div>
+          <!-- 右バナー2 -->
+          <div class="carousel slide banner" data-bs-ride="carousel">
+            <div class="carousel-inner shadow">
+              <div class="carousel-item active">
+                <a href="/grandprix"><img th:src="@{/images/banner/grandprix.png}" class="d-block w-100" alt="..."></a>
+              </div>
+            </div>
+          </div>
+          <!-- 右バナー3 -->
+          <div class="carousel slide banner" data-bs-ride="carousel">
+            <div class="carousel-inner shadow">
+              <div class="carousel-item active">
+                <a href="/fortune"><img th:src="@{/images/banner/fortuneSpecialty.png}" class="d-block w-100" alt="..."></a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- sidebar_fixed -->
+</body>
+</html>

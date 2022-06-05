@@ -1,0 +1,53 @@
+#center{
+    text-align: center;
+}
+
+#prefecture{
+    text-align: center;
+}
+
+#prefecture-img{
+    background-color: #AAAAAA;
+    height: 225px;
+    width: auto;
+    object-fit: contain;
+}
+
+.card-text{
+    font-size: large;
+}
+
+.card-body{
+    border-color: #800000;
+    border-radius: 0em;
+    height: 255px;
+}
+
+img.nine{
+    width: auto;
+    height: 75px;
+}
+
+i.nine {
+    width: auto;
+    height: 75px;
+    margin-top: 2px;
+}
+
+.card{
+    height: 550px;
+    border-color: #800000;
+    background-color: #C2EEFF
+}
+
+.row{
+    margin: 50px;
+}
+
+.top{
+    text-align: center;
+}
+
+i.gold {
+    color: gold;
+}

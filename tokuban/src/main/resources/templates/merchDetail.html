@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- 全ページ共通ここから -->
+
+	<!-- おまじない -->
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/x-icon" th:href="@{/images/toku.png}">
+
+	<!-- bootstrap: CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<!-- bootstrap: JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+		crossorigin="anonymous"></script>
+	<!-- Fontawesome: JavaScript Bundle with Popper -->
+	<script src="https://kit.fontawesome.com/ba93ae2070.js" crossorigin="anonymous"></script>
+
+	<!-- Fontawesome -->
+	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<!-- JavaScript -->
+	<script th:src="@{/js/pageTop.js}"></script>
+	<link rel="stylesheet" th:href="@{/css/history.css}">
+	<link rel="stylesheet" th:href="@{/css/search.css}">
+	<link rel="stylesheet" th:href="@{/css/merchDetail.css}">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script th:src="@{/js/spinner.js}"></script>
+	<meta name="author" content="高根謙信">
+	<title>商品詳細 | とくバン</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+	<div th:replace="header :: header"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-9">
+				<main>
+					<!-- 商品詳細の画像とかここから -->
+
+						<div class="row" style="margin-left: 0px; margin-right: 0px; height: 400px;">
+							<div class="col-md-4" style="width: 50%">
+							<form action="/merchDeteil" method="GET">
+								<a class="info" href="#">
+									<div class="img">
+										<img th:src="@{/images/merch/{merchId}/1.jpg(merchId=${detail.merchId})}"
+											class="bd-placeholder-img card-img-top"
+											style="max-width: 100%; width: 300px; height: 284px;" id="main" name="main">
+
+									</div>
+								</a> <br>
+								<div class="img" style="height: 70px">
+									<img th:src="@{/images/merch/{merchId}/1.jpg(merchId=${detail.merchId})}"
+									 style="width: 18%; height: 100%;"
+										class="img-thumbnail"
+										 onmouseover="myChgPic('../images/merch/${detail.merchId}/1.jpg');"> <img
+										th:src="@{/images/merch/{merchId}/2.jpg(merchId=${detail.merchId})}"
+										style="width: 18%; height: 100%;"
+										class="img-thumbnail"
+										 onmouseover="myChgPic('@{images/merch/{merchId}/2.jpg(merchId=${detail.merchId})}');"> <img
+										 th:src="@{/images/merch/{merchId}/3.jpg(merchId=${detail.merchId})}"
+										style="width: 18%; height: 100%;"
+										class="img-thumbnail"
+										 onmouseover="myChgPic('/images/merch/${detail.merchId}/3.jpg');"> <img
+										 th:src="@{/images/merch/{merchId}/4.jpg(merchId=${detail.merchId})}"
+										style="width: 18%; height: 100%;"
+										class="img-thumbnail"
+										 onmouseover="myChgPic('images/merch/${detail.merchId}/4.jpg');"> <img
+										 th:src="@{/images/merch/{merchId}/5.jpg(merchId=${detail.merchId})}"
+										style="width: 18%; height: 100%;"
+										class="img-thumbnail"
+										 onmouseover="myChgPic('@{/images/merch/{merchId}/5.jpg(merchId=${detail.merchId})}');">
+								</div>
+								<button type="submit" hidden></button>
+								</form>
+							</div>
+							<div class="col-md-4" style="padding-right: 0px;">
+								<div>
+									<p class="card-text">
+										<font size="4"><span th:text="${detail.prefectureName}"></span>　<span
+												th:text="${detail.makerName}"></span></font><br>
+										<font size="6" th:text="${detail.merchName}"></font>
+										<br>
+										<font size="4" color="#FFCC00">★★★★★</font><br>
+										<font size="4" color="red">(税込み)<span th:text="${detail.basePrice}"></span>円
+										</font><br>
+									</p>
+									<!-- カート追加用フォーム -->
+									<form action="/addCart" th:object="${cart}" method="POST">
+									<div class="spinner_area">
+											<input type="number" th:value="1" class="counter1" data-max="10" data-min="0"  th:object="${cart}"
+												name="quantity" style="width: 40%"> <input type="button"
+												value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
+											<input type="button" value="＋" class="btnspinner" data-cal="1"
+												data-target=".counter1">
+										</div>
+										<!-- 商品idを送る -->
+										<input type="hidden" th:object="${detail}" th:field="*{merchId}">
+										<br>
+										<button type="submit" class="btn btn-secondary">
+											<i class="fas fa-cart-plus"></i> カートに入れる
+										</button>
+									</form>
+									<!-- ここまで -->
+								</div>
+
+							</div>
+
+							<!-- <div class="col-md-4"
+								style="margin-top: 10px; width: 16%; padding-left: 0px; padding-right: 5px; padding-bottom: 0px;">
+								<ul class="list-group">
+									<li class="list-group-item" style="padding-right: 1px; padding-left: 1px;">
+										<p style="text-align: center; margin-bottom: 0px;">
+											<i class="fas fa-crown"></i> <br>だいすきナイン登録
+										</p>
+									</li>
+									<li class="list-group-item"
+										style="padding-right: 0px; padding-left: 0px; text-align: center">
+										<div class="btn-group-vertical">
+											だいすきナイン追加ボタン用のform (商品IDも送りたい)
+											<form action="/premium/addCenter" th:objact="${form}">
+												<input type="hidden" th:field="*{merchId}" value="${.merchId}">
+												<input type="hidden" th:field="*{column}" value="fav_center_id">
+												<button type="button" class="btn btn-danger"
+													style="text-align: center">センターに選抜</button>
+											</form>
+											<br>
+											地方選抜
+											<form action="/premium/addFavorite" th:objact="${form}">
+												<button type="button" class="btn btn-danger"
+													style="text-align: center">地方代表に選抜</button>
+												<input type="hidden" th:field="*{merchId}" value="${.merchId}">
+											</form>
+											<br>
+											<a href="mypage.html"><button type="button" class="btn btn-warning"
+													style="text-align: center">だいすきナインを確認する</button></a>
+										</div>
+									</li>
+								</ul>
+							</div> -->
+						</div>
+						<!-- row(高根) -->
+
+						<h2 style="margin-left: 30px;">商品説明</h2>
+						<p style="margin-left: 30px; margin-top: 20px;">
+							<span th:text="${merch.merchDetail}"></span>
+						</p>
+
+						<!-- ここから商品詳細の表 --> <br>
+						<h2 style="margin-left: 30px;">商品詳細</h2>
+						<p>
+						<table class="table border-dark" style="width: 70%; margin-left: 30px;">
+							<tbody>
+								<tr>
+									<th scope="row" style="width: 20%">内容量</th>
+									<td><span th:text="${merch.merchContent}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">原材料</th>
+									<td><span th:text="${merch.madeFrom}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">アレルギー</th>
+									<td><span th:text="${merch.allergen}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">賞味期限</th>
+									<td><span th:text="${merch.bestBefore}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">保存方法</th>
+									<td><span th:text="${merch.storeMethod}"></span></td>
+								</tr>
+							</tbody>
+						</table>
+						<br>
+
+						<!-- 商品詳細の画像とかここまで -->
+
+					<!-- 人気商品ここまで -->
+				</main>
+				<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+					integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+					crossorigin="anonymous"></script>
+				<script>
+					function myChgPic(myPicURL) {
+						document.images["main"].th:src = myPicURL;
+					}
+				</script>
+				<!-- ここ -->
+
+			</div>
+			<!-- col-9(メインコンテンツ)(たぶん) -->
+			<div class="col-3">
+
+				<div th:replace="sidebar :: sidebar"></div>
+			</div>
+			<!-- col-3(右サイドバナー) -->
+
+
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+	<div th:replace="footer :: footer"></div>
+
+	<!-- ページTOPへ戻る -->
+    <p class="nav-fix-pos-pagetop">
+    <a href="#" class="pagetop">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </p>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    height: 200px;
+    width: auto;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.card {
+    height: 200px;
+}
+
+div.close {
+    margin-left: 80%;
+}
+
+.btnspinner {
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.spinner_area input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 11px;
+    width: auto;
+    vertical-align: middle;
+    /* デフォルトのスピナーを消す */
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.spinner_area input[type="button"] {
+    cursor: pointer;
+}
+
+.img {
+    text-align: center;
+}
+
+/* 周東追記分ここから */
+.superimpose {
+    position: relative;
+}
+
+.medal {
+    width: 20%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+i.gold {
+    color: gold;
+}
+
+i.silver {
+    color: silver;
+}
+
+i.bronze {
+    color: brown;
+}
+/* 周東追記分ここまで */
+
+h1 {
+    position: relative;
+    padding: 1rem 2rem calc(1rem + 10px);
+    background: #fff100;
+    text-align: center;
+}
+
+h1:before {
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border: 4px solid #000;
+}
+
+.row {
+    margin: 10px;
+}

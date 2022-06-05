@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- 全ページ共通ここから -->
+
+  <!-- おまじない -->
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" th:href="@{/image/toku.png}">
+
+  <!-- bootstrap: CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- bootstrap: JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <!-- Fontawesome: JavaScript Bundle with Popper -->
+  <script src="https://kit.fontawesome.com/ba93ae2070.js" crossorigin="anonymous"></script>
+
+  <!-- Fontawesome -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <!-- JavaScript -->
+  <script th:src="@{/js/pageTop.js}"></script>
+
+  <link rel="stylesheet" th:href="@{/css/history.css}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script th:src="@{/js/spinner.js}"></script>
+
+  <meta name="author" content="小野・高根">
+
+  <title>検索結果 | とくバン</title>
+
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+  <div th:replace="header :: header"></div>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-9">
+        <main>
+          <!-- ここ -->
+          <div class="titlePart">
+            <h1>検索結果一覧</h1><br>
+          </div>
+          <br>
+
+          <!-- セレクトボックスコメントアウト -->
+           <!-- <form action="sort" method="post"th:object="${searchForm}">
+          <div class="sortbtn">
+            <select class="sort" name= "howToSort" th:field = "*{howToSort}">
+              <option value="1">新着順</option>
+              <option value="2">おすすめ順</option>
+              <option value="3">価格が高い順</option>
+              <option value="4">価格が低い順</option>
+            </select>
+          <input type="hidden" name="merchId" th:value="*{merchId}">
+          </div>
+          </form> -->
+
+          <div class="row">
+          <!-- th:each="merchList : ${merchList}" 修正-->
+            <div class="col-md-4 shadow-sm p-3 mb-5 bg-body rounded" th:each="merchList : ${merchList}">
+              <a class="info" th:href="@{/merchDetail(merchId=${merchList.merchId})}" method="get" th:target="_blank">
+                <div class="img">
+                  <img th:src="@{/images/merch/{merchId}/1.jpg(merchId=${merchList.merchId})}"
+                  class="bd-placeholder-img card-img-top img-thumbnail">
+                </div>
+                <div>
+                  <p class="card-text">
+                    <span th:text="${merchList.prefectureName}"></span>　<span th:text="${merchList.makerName}"></span><br>
+                    <span th:text="${merchList.merchName}"></span><br>
+
+					<!--  th:text="${merchList.basePrice}"と円追加 -->
+                    (税込み)<span th:text="${merchList.basePrice}" id="taxPrice"></span>円<br>
+                    <font color="#FFCC00">★★★★★</font>
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">注文可能</small>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+          <!-- ここ -->
+        </main>
+      </div><!-- col-9(メインコンテンツ) -->
+
+      <div class="col-3">
+
+  <div th:replace="sidebar :: sidebar"></div>
+      </div><!-- col-3(右サイドバナー) -->
+
+    </div><!-- row -->
+  </div><!-- container -->
+
+  <div th:replace="footer :: footer"></div>
+
+  <!-- ページTOPへ戻る -->
+    <p class="nav-fix-pos-pagetop">
+    <a href="#" class="pagetop">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </p>
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- 全ページ共通ここから -->
+
+<!-- おまじない -->
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" th:href="@{/image/toku.png}">
+
+<!-- bootstrap: CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<!-- bootstrap: JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+	crossorigin="anonymous"></script>
+<!-- Fontawesome: JavaScript Bundle with Popper -->
+<script src="https://kit.fontawesome.com/ba93ae2070.js"
+	crossorigin="anonymous"></script>
+
+<!-- Fontawesome -->
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP"
+	rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<!-- JavaScript -->
+<script th:src="@{/js/pageTop.js}"></script>
+<link rel="stylesheet" th:href="@{/css/history.css}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+<script th:src="@{/js/spinner.js}"></script>
+
+<meta name="author" content="小野・高根">
+
+<title>カート | とくバン</title>
+
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+	<div th:replace="header :: header"></div>
+	<!-- 合計値計算（できてない） -->
+	<div class="container">
+		<div class="row">
+			<div class="col-9">
+				<main>
+					<!-- ここ -->
+					<h2 class="text-center">
+						<i class="fas fa-shopping-cart"></i> カート
+
+					</h2>
+					<br>
+					<!-- 合計値計算用-->
+					<script>
+            var sum = 0;
+            var count = 0;
+            var merchIds = [];
+          </script>
+					<div class="row">
+						<!-- カート用 -->
+						<th:block th:each="result : ${RESULTS}">
+							<script th:inline="javascript">
+						/*<![CDATA[*/
+							var id = /*[[${result.merchId}]]*/;
+							/*]]>*/</script>
+							<div class="col-md-4" style="margin-top: 10px;">
+								<a class="info" href="#">
+									<div class="cart-img">
+										<img
+											th:src="@{/images/merch/{merchId}/1.jpg(merchId=${result.merchId})}"
+											class="bd-placeholder-img card-img-top" style="width: 100%;">
+									</div>
+								</a>
+							</div>
+							<!-- col-md-4 -->
+							<div class="col-md-4">
+								<p class="card-text" style="margin-top: 10px;">
+									<span th:text="${result.prefectureName}"></span> <span
+										th:text="${result.makerName}"></span><br> <span
+										th:text="${result.merchName}"></span> <br> (税込み)<span
+										th:text="${result.includingTax}"
+										th:id="'price' + ${result.merchId}"></span>円<br>
+								</p>
+								<div class="spinner_area">
+									<input th:value="${result.quantity}" th:class="${result.merchId}" data-max="10" data-min="1"
+										th:id="'quantity' + ${result.merchId}"> <input
+										type="button" value="－" class="btnspinner" data-cal="-1"
+										data-target="" th:attrappend="data-target=${'.' + result.merchId}" th:id="'minus' + ${result.merchId}">
+									<input type="button" value="＋" class="btnspinner" data-cal="1"
+										data-target="" th:attrappend="data-target=${'.' + result.merchId}" th:id="'plus' + ${result.merchId}">
+									<br>
+									<!-- 合計計算 -->
+									<font>合計：<span th:id="'sum' + ${result.merchId}">
+											<script th:inline="javascript">
+                      /*<![CDATA[*/
+
+                      var price = parseInt(document.getElementById("price" + id).textContent);
+                      var quantity = parseInt(document.getElementById("quantity" + id).value);
+                      merchIds[count] = id;
+                      sum += price * quantity;
+                      document.write(price * quantity);
+                      document.getElementById("minus" + id).onclick = calcMinus(id);
+                      document.getElementById("plus" + id).onclick = calcPlus(id);
+                      count ++;
+                      /*]]>*/
+                    </script>
+									</span> 円
+									</font>
+								</div>
+								<p>
+								<!-- チェックボックス
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value=""
+										th:id="'purchaseFalg' + ${result.merchId}" onclick="calc();"
+										checked> <label class="form-check-label"
+										for="'purchaseFalg' + ${result.merchId}"> 購入する </label>
+								</div>  -->
+
+							</div>
+
+							<!-- col-md-4 -->
+
+							<div class="col-md-4" style="margin-top: 10px;">
+								<div class="close">
+									<a th:href="@{/deleteCart(merchId=${result.merchId})}"
+										method="GET">
+										<!-- カート用のボタンとhidden（商品idはわからん） -->
+										<button type="submit" class="btn-close" aria-label="Close"></button>
+
+									</a>
+								</div>
+							</div>
+
+							<!-- col-md-4 -->
+							<!-- カート用のフォーム -->
+
+						</th:block>
+						<!-- col-md-4 -->
+					</div>
+					<!-- row -->
+					<p style="text-align: center; margin-top: 70px;">
+						<font size="5">購入合計金額 </font> <font class="w-25 p-3"
+							style="background-color: #eee;" size="5" id="sumAll"> <script>
+                document.write(sum);
+               </script>
+						</font>
+					</p>
+
+					<!-- 決済ボタン -->
+					<br>
+					<button type="button" class="btn btn-secondary"
+						onclick="location.href='moveDelivery'"
+						style="text-align: center; width: 20%; margin-left: 340px">決済へ</button>
+
+				</main>
+			</div>
+			<!-- col-9(メインコンテンツ) -->
+			<div class="col-3">
+				<div th:replace="sidebar :: sidebar"></div>
+			</div>
+			<!-- col-3(右サイドバナー) -->
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+
+	<div th:replace="footer :: footer"></div>
+	<script>
+	function calcPlus(where) {
+	    var quantity;
+	    sum = 0;
+	      for(var i = 0; i < count; i++){
+	        id = parseInt(merchIds[i]);
+	        quantity = parseInt(document.getElementById("quantity" + id).value);
+	        if(where == i && document.getElementById('purchaseFlag' + id).checked && quantity < 10){
+	          var price = document.getElementById('sum' + id).textContent = parseInt(document.getElementById("price" + id).textContent) * (quantity + 1);
+	          sum += price;
+	        } else if(document.getElementById('purchaseFlag' + id).checked){
+	          var price = document.getElementById('sum' + id).textContent = parseInt(document.getElementById("price" + id).textContent) * quantity;
+	          sum += price;
+	        }
+	      }
+	    var newsum = document.getElementById('sumAll').textContent = sum;
+	  }
+
+	  function calcMinus(where) {
+	    var quantity;
+	    sum = 0;
+	      for(var i = 0; i < count; i++){
+	        id = parseInt(merchIds[i]);
+	        quantity = parseInt(document.getElementById("quantity" + id).value);
+	        if(where == i && document.getElementById('purchaseFlag' + id).checked && quantity > 1){
+	          var price = document.getElementById('sum' + id).textContent = parseInt(document.getElementById("price" + id).textContent) * (quantity - 1);
+	          sum += price;
+	        } else if(document.getElementById('purchaseFlag' + id).checked){
+	          var price = document.getElementById('sum' + id).textContent = parseInt(document.getElementById("price" + id).textContent) * quantity;
+	          sum += price;
+	        }
+	      }
+	    var newsum = document.getElementById('sumAll').textContent = sum;
+	  }
+
+	  function calc() {
+	    var id;
+	    sum = 0;
+	      for(var i = 0; i < count; i++){
+	        id = parseInt(merchIds[i]);
+	        quantity = parseInt(document.getElementById("quantity" + id).value);
+	        if(document.getElementById('purchaseFlag' + id).checked){
+	          var price = document.getElementById('sum' + id).textContent = parseInt(document.getElementById("price" + id).textContent) * quantity;
+	          sum += price;
+	        }
+	      }
+	    var newsum = document.getElementById('sumAll').textContent = sum;
+	  }
+  </script>
+
+<!-- ページTOPへ戻る -->
+    <p class="nav-fix-pos-pagetop">
+    <a href="#" class="pagetop">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </p>
+
+</body>
+
+</html>

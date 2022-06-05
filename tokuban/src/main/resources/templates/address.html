@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- 全ページ共通ここから -->
+
+  <!-- おまじない -->
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" th:href="@{/image/toku.png}">
+
+  <!-- bootstrap: CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- bootstrap: JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <!-- Fontawesome: JavaScript Bundle with Popper -->
+  <script src="https://kit.fontawesome.com/ba93ae2070.js" crossorigin="anonymous"></script>
+
+  <!-- Fontawesome -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <!-- JavaScript -->
+  <script th:src="@{/js/pageTop.js}"></script>
+  <link rel="stylesheet" th:href="@{/css/address.css}">
+  <link rel="stylesheet" th:href="@{/css/formTable.css}">
+  <title>お届け先選択 | とくバン</title>
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+  <p class="nav-fix-pos-pagetop"><a href="#">↑</a></p>
+<div th:replace="header :: header"></div>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-9">
+        <main>
+          <!-- ここから -->
+          <h3>お届け先住所の選択</h3>
+          <!-- 登録済み住所1 -->
+          <div class="shadow-sm p-3 mb-5 bg-body rounded added-address" th:if="${address1}">
+            <div class="left" th:object="${address1}">
+              <p class="address"><strong th:text="*{toName}">佐藤達也</strong> </p>
+              <p class="address" th:text="*{zipcode}"></p>
+              <p class="address" th:inline="text">[[*{addressCore}]][[*{addressNumber}]]</p>
+              <p class="address" th:text="*{addressBuilding}"></p>
+            </div>
+
+            <div class="left">
+              <a th:href="@{/setAddress(addressId=${address1.addressId})" button type="button" class="btn btn-warning">この住所に届ける</button></a>
+              <a href="/editAddress1"><button type="button" class="btn btn-outline-dark">編集</button></a>
+            </div>
+          </div>
+          <div class="shadow-sm p-3 mb-5 bg-body rounded added-address" th:unless="${address1}">
+            <div class="left">
+                <p class="address">
+                    <strong>設定されていません</strong>
+                </p>
+                <p class="address">設定されていません</p>
+                <p class="address">設定されていません</p>
+                <p class="address">設定されていません</p>
+            </div>
+            <div class="left">
+                <a th:href="@{/mypage/showFormForUpdate1}">
+                    <button type="button" class="btn btn-outline-dark">登録</button>
+                </a>
+                <a th:href="@{/mypage/delete1}"
+                onclick="if (!(confirm('Are you sure you want to delete this address?'))) return false">
+                    <button type="button" class="btn btn-outline-dark">削除</button>
+                </a>
+            </div>
+        </div>
+
+          <!-- 登録済み住所2 -->
+          <div class="shadow-sm p-3 mb-5 bg-body rounded added-address">
+            <div class="left">
+              <p class="address"><strong>小河原英毅</strong> </p>
+              <p class="address">1508366</p>
+              <p class="address">東京都渋谷区渋谷 4-4-25</p>
+              <p class="address">青山キャンパス</p>
+            </div>
+
+            <div class="left">
+              <a href="delivery.html"><button type="button" class="btn btn-warning">この住所に届ける</button></a>
+              <a href="editAddress.html"><button type="button" class="btn btn-outline-dark">編集</button></a>
+              <button type="button" class="btn btn-outline-dark">削除</button>
+            </div>
+          </div>
+          <hr>
+          <!-- 住所新規登録 :高根 修正-->
+          <h3>登録していない住所に配送する</h3>
+          <div class="shadow p-3 mb-5 bg-body rounded">
+            <form action="delivery.html" method="POST">
+              <table>
+                <tr>
+                  <th>郵便番号<p>例）1410022</p>
+                  </th>
+                  <td colspan="2"><input type="text"></td>
+                </tr>
+                <tr>
+                  <th>住所1<p>例）東京都品川区東五反田</p>
+                  </th>
+                  <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr>
+                  <th>住所2<p>例）2-3-5</p>
+                  </th>
+                  <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr>
+                  <th>住所3<p>例）五反田中央ビル3階</p>
+                  </th>
+                  <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr>
+                  <th>氏名<p>例）特産実</p>
+                  </th>
+                  <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr>
+                  <th>フリガナ<p>例）トクサンミノル</p>
+                  </th>
+                  <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr></tr>
+
+                <tr>
+                  <th></th>
+                  <td colspan="3" class="right"><input type="submit" class="btn btn-warning" value="配送する"></td>
+                </tr>
+
+              </table>
+            </form>
+          </div>
+        </main>
+      </div><!-- col-9(メインコンテンツ) -->
+      <div class="col-3">
+        <div th:replace="sidebar :: sidebar"></div>
+      </div><!-- col-3(右サイドバナー) -->
+    </div><!-- row -->
+  </div><!-- container -->
+  <div th:replace="footer :: footer"></div>
+
+<!-- ページTOPへ戻る -->
+    <p class="nav-fix-pos-pagetop">
+    <a href="#" class="pagetop">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </p>
+</body>
+
+</html>

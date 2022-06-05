@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/*  グランプリのタブとかの表示を設定するCSSです。
+    作成：周東 */
+
+.tabs {
+    padding-bottom: 40px;
+    background-color: #f8f8ff;
+    box-shadow: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    margin: 50px auto;
+}
+
+.tab_item {
+    width: calc(100% / 8);
+    height: 50px;
+    border: solid #f8f8ff;
+    border-collapse: collapse;
+    background-color: #313133;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #f8f8ff;
+    display: block;
+    float: left;
+    transition: all 0.2s ease;
+}
+
+
+input[name="tab_item"] {
+    display: none;
+}
+
+.tab_content {
+    display: none;
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+}
+
+#hokkaido:checked~#hokkaido_content, #tohoku:checked~#tohoku_content, #kanto:checked~#kanto_content, #chubu:checked~#chubu_content, #kinki:checked~#kinki_content, #chugoku:checked~#chugoku_content, #shikoku:checked~#shikoku_content, #kyushu:checked~#kyushu_content {
+    display: block;
+}
+
+.tabs input:checked+.tab_item {
+    background-color: #ffc107; /*bootstrapのwarningはこの色のはず*/
+    color: #000000;
+}
+
+.tab_content_description > *{
+    margin-left: auto;
+    margin-right: auto;
+}

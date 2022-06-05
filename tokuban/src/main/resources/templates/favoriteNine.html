@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+  <div th:fragment="favoriteNine">
+  <!-- だいすきナイン：末永・小野 -->
+  <div class="top">
+    <h1 style="color: #800000;">
+      <i class="fas fa-crown"></i>だいすきナイン
+    </h1>
+    <p class="lead text-muted">あなたのお気に入りの名産品を、だいすきナインとして選抜することができます。</p>
+
+  </div>
+
+  <div class="row row-cols-3">
+    <!-- センター -->
+    <div class="col">
+      <div class="card shadow-sm" id="center">
+        <div style="height: 75px;">
+        <i class="fas fa-crown fa-4x nine gold"></i>
+        </div>
+        <!-- Image trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#centerModal"> <img
+          th:src="@{/images/merch/{merchId}/1.jpg(merchId=${favNine[0].merchId})}" class="img-thumbnail"
+          id="prefecture-img">
+        </a>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="centerModal" tabindex="-1"
+          aria-labelledby="centerModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="centerModalLabel">
+                  <h2 style="color: red;">センター</h2>
+                </h5>
+                <button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="#" method="POST">
+              <div class="modal-body" th:object="${favNine[0]}">
+                <p class="card-text" th:text="*{prefectureName}"></p>
+                <p class="card-text" th:text="*{makerName}"></p>
+                <p class="card-text" th:text="*{merchName}"></p>
+
+                <small class="text-muted" th:if="*{merchId}">注文可能</small>
+              </div>
+              <div class="modal-footer">
+                <div class="spinner_area">
+                  <form action="addCart" th:object="${cartFormCenter}">
+                  <input type="hidden" th:field="*{merchId}">
+                  <input value="1" class="counter1" data-max="10" data-min="1" th:field="*{quantity}">
+                  <input type="button" value="－"
+                    class="btnspinner" data-cal="-1" data-target=".counter1">
+                  <input type="button" value="＋" class="btnspinner" data-cal="1"
+                    data-target=".counter1">
+                  <button type="submit" class="btn btn-warning">カートに入れる</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">推し変する</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
+        <div class="card-body">
+          <p class="card-text">
+            <h2 style="color: red;">センター</h2>
+          </p>
+        </div>
+      </div>
+      <!-- card shadow-sm -->
+
+    </div>
+
+    <!-- 北海道 -->
+    <div class="col">
+      <div class="card shadow-sm" id="prefecture">
+        <div>
+          <img th:src="@{/images/japan/hokkaido.png}" class="nine">
+        </div>
+        <!-- Image trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#Hokkaido"> <img
+          th:src="@{/images/merch/{merchId}/1.jpg(merchId=${favNine[1].merchId})}" class="img-thumbnail"
+          id="prefecture-img">
+        </a>
+        <!-- Button trigger modal -->
+
+       <!-- Modal -->
+       <div class="modal fade" id="Hokkaido" tabindex="-1"
+       aria-labelledby="hokkaidoModalLabel" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="hokkaidoModalLabel">
+               <h2 style="color: red;">北海道代表</h2>
+             </h5>
+             <button type="button" class="btn-close"
+               data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <form action="#" method="POST">
+           <div class="modal-body" th:object="${favNine[0]}">
+             <p class="card-text" th:text="*{prefectureName}"></p>
+             <p class="card-text" th:text="*{makerName}"></p>
+             <p class="card-text" th:text="*{merchName}"></p>
+
+             <small class="text-muted" th:if="*{merchId}">注文可能</small>
+           </div>
+           <div class="modal-footer">
+             <div class="spinner_area">
+               <form action="addCart" th:object="${cartFormHokkaido}">
+               <input type="hidden" th:field="*{merchId}">
+               <input value="1" class="counter1" data-max="10" data-min="1" th:field="*{quantity}">
+               <input type="button" value="－"
+                 class="btnspinner" data-cal="-1" data-target=".counter1">
+               <input type="button" value="＋" class="btnspinner" data-cal="1"
+                 data-target=".counter1">
+               <button type="submit" class="btn btn-warning">カートに入れる</button>
+               </form>
+               <button type="button" class="btn btn-secondary"
+               data-bs-dismiss="modal">推し変する</button>
+             </div>
+           </div>
+           </form>
+         </div>
+       </div>
+     </div>
+     <!-- Modal -->
+
+
+        <div class="card-body">
+          <p class="card-text">
+          <h4>北海道代表</h4>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 東北 -->
+    <div class="col">
+      <div class="card shadow-sm" id="prefecture">
+        <div>
+          <img src="images/japan/tohoku.png" class="nine">
+        </div>
+        <!-- Image trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#Tohoku"> <img
+          th:src="@{/images/merch/{merchId}/1.jpg(merchId=${favNine[2].merchId})}" class="img-thumbnail"
+          id="prefecture-img">
+        </a>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="Tohoku" tabindex="-1"
+          aria-labelledby="tohokuModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="tohokuModalLabel">
+                  <h2 style="color: red;">東北代表</h2>
+                </h5>
+                <button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="#" method="POST">
+              <div class="modal-body" th:object="${favNine[1]}">
+                <p class="card-text" th:text="*{prefectureName}"></p>
+                <p class="card-text" th:text="*{makerName}"></p>
+                <p class="card-text" th:text="*{merchName}"></p>
+
+                <small class="text-muted" th:if="*{merchId}">注文可能</small>
+              </div>
+              <div class="modal-footer">
+                <div class="spinner_area">
+                  <form action="addCart" th:object="${cartFormTohoku}">
+                  <input type="hidden" th:field="*{merchId}">
+                  <input value="1" class="counter1" data-max="10" data-min="1" th:field="*{quantity}">
+                  <input type="button" value="－"
+                    class="btnspinner" data-cal="-1" data-target=".counter1">
+                  <input type="button" value="＋" class="btnspinner" data-cal="1"
+                    data-target=".counter1">
+                  <button type="submit" class="btn btn-warning">カートに入れる</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">推し変する</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
+
+        <div class="card-body">
+          <p class="card-text">
+          <h4>東北代表</h4>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-3">
+
+    <!-- 関東 -->
+    <div class="col">
+      <div class="card shadow-sm" id="prefecture">
+        <div>
+          <img src="images/japan/kanto.png" class="nine">
+        </div>
+
+        <!-- Image trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#Kanto"> <img
+          th:src="@{/images/merch/{merchId}/1.jpg(merchId=${favNine[3].merchId})}" class="img-thumbnail"
+          id="prefecture-img">
+        </a>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="Kanto" tabindex="-1"
+          aria-labelledby="kantoModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="kantoModalLabel">
+                  <h2 style="color: red;">関東代表</h2>
+                </h5>
+                <button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="#" method="POST">
+              <div class="modal-body" th:object="${favNine[2]}">
+                <p class="card-text" th:text="*{prefectureName}"></p>
+                <p class="card-text" th:text="*{makerName}"></p>
+                <p class="card-text" th:text="*{merchName}"></p>
+
+                <small class="text-muted" th:if="*{merchId}">注文可能</small>
+              </div>
+              <div class="modal-footer">
+                <div class="spinner_area">
+                  <form action="addCart" th:object="${cartFormKanto}">
+                  <input type="hidden" th:field="*{merchId}">
+                  <input value="1" class="counter1" data-max="10" data-min="1" th:field="*{quantity}">
+                  <input type="button" value="－"
+                    class="btnspinner" data-cal="-1" data-target=".counter1">
+                  <input type="button" value="＋" class="btnspinner" data-cal="1"
+                    data-target=".counter1">
+                  <button type="submit" class="btn btn-warning">カートに入れる</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">推し変する</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
+
+        <div class="card-body">
+          <p class="card-text">
+          <h4>関東代表</h4>
+          </p>
+          <p class="card-text"></p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 中部 -->
+    <div class="col">
+      <div class="card shadow-sm" id="prefecture">
+        <div>
+          <img src="images/japan/chubu.png" class="nine">
+        </div>
+
+        <!-- Image trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#Chubu"> <img
+          th:src="@{/images/merch/{merchId}/1.jpg(merchId=${favNine[4].merchId})}" class="img-thumbnail"
+          id="prefecture-img">
+        </a>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="Chubu" tabindex="-1"
+          aria-labelledby="chubuModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="chubuModalLabel">
+                  <h2 style="color: red;">中部代表</h2>
+                </h5>
+                <button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="#" method="POST">
+              <div class="modal-body" th:object="${favNine[3]}">
+                <p class="card-text" th:text="*{prefectureName}"></p>
+                <p class="card-text" th:text="*{makerName}"></p>
+                <p class="card-text" th:text="*{merchName}"></p>
+
+                <small class="text-muted" th:if="*{merchId}">注文可能</small>
+              </div>
+              <div class="modal-footer">
+                <div class="spinner_area">
+                  <form action="addCart" th:object="${cartFormChubu}">
+                  <input type="hidden" th:field="*{merchId}">
+                  <input value="1" class="counter1" data-max="10" data-min="1" th:field="*{quantity}">
+                  <input type="button" value="－"
+                    class="btnspinner" data-cal="-1" data-target=".counter1">
+                  <input type="button" value="＋" class="btnspinner" data-cal="1"
+                    data-target=".counter1">
+                  <button type="submit" class="btn btn-warning">カートに入れる</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">推し変する</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
+
+        <div class="card-body">
+          <p class="card-text">
+          <h4>中部代表</h4>
+          </p>
+          <p class="card-text"></p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 近畿 -->
+    <div class="col">
+      <div class="card shadow-sm" id="prefecture">
+        <div>
+          <img src="images/japan/kinki.png" class="nine">
+        </div>
+
+        <!-- Image trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#Kinki"> <img
+          th:src="@{/images/merch/{merchId}/1.jpg(merchId=${favNine[5].merchId})}" class="img-thumbnail"
+          id="prefecture-img">
+        </a>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="Kinki" tabindex="-1"
+          aria-labelledby="kinkiModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="kinkiModalLabel">
+                  <h2 style="color: red;">近畿代表</h2>
+                </h5>
+                <button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="#" method="POST">
+              <div class="modal-body" th:object="${favNine[4]}">
+                <p class="card-text" th:text="*{prefectureName}"></p>
+                <p class="card-text" th:text="*{makerName}"></p>
+                <p class="card-text" th:text="*{merchName}"></p>
+
+                <small class="text-muted" th:if="*{merchId}">注文可能</small>
+              </div>
+              <div class="modal-footer">
+                <div class="spinner_area">
+                  <form action="addCart" th:object="${cartFormKinki}">
+                  <input type="hidden" th:field="*{merchId}">
+                  <input value="1" class="counter1" data-max="10" data-min="1" th:field="*{quantity}">
+                  <input type="button" value="－"
+                    class="btnspinner" data-cal="-1" data-target=".counter1">
+                  <input type="button" value="＋" class="btnspinner" data-cal="1"
+                    data-target=".counter1">
+                  <button type="submit" class="btn btn-warning">カートに入れる</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">推し変する</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
+
+        <div class="card-body">
+          <p class="card-text">
+          <h4>近畿代表</h4>
+          </p>
+          <p class="card-text"></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-3">
+    <!-- 中国 -->
+    <div class="col">
+      <div class="card shadow-sm" id="prefecture">
+        <div>
+          <img src="images/japan/chugoku.png" class="nine">
+        </div>
+        <!-- Image trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#Chugoku"> <img
+          th:src="@{/images/merch/{merchId}/1.jpg(merchId=${favNine[6].merchId})}" class="img-thumbnail"
+          id="prefecture-img">
+        </a>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="Chugoku" tabindex="-1"
+          aria-labelledby="chugokuModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="chuoModalLabel">
+                  <h2 style="color: red;">中国代表</h2>
+                </h5>
+                <button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="#" method="POST">
+              <div class="modal-body" th:object="${favNine[6]}">
+                <p class="card-text" th:text="*{prefectureName}"></p>
+                <p class="card-text" th:text="*{makerName}"></p>
+                <p class="card-text" th:text="*{merchName}"></p>
+
+                <small class="text-muted" th:if="*{merchId}">注文可能</small>
+              </div>
+              <div class="modal-footer">
+                <div class="spinner_area">
+                  <form action="addCart" th:object="${cartFormChugoku}">
+                  <input type="hidden" th:field="*{merchId}">
+                  <input value="1" class="counter1" data-max="10" data-min="1" th:field="*{quantity}">
+                  <input type="button" value="－"
+                    class="btnspinner" data-cal="-1" data-target=".counter1">
+                  <input type="button" value="＋" class="btnspinner" data-cal="1"
+                    data-target=".counter1">
+                  <button type="submit" class="btn btn-warning">カートに入れる</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">推し変する</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
+
+        <div class="card-body">
+          <p class="card-text">
+          <h4>中国代表</h4>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 四国 -->
+    <div class="col">
+      <div class="card shadow-sm" id="prefecture">
+        <div>
+          <img src="images/japan/shikoku.png" class="nine">
+        </div>
+
+        <!-- Image trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#Shikoku"> <img
+          th:src="@{/images/merch/{merchId}/1.jpg(merchId=${favNine[7].merchId})}" class="img-thumbnail"
+          id="prefecture-img">
+        </a>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="Shikoku" tabindex="-1"
+          aria-labelledby="shikokuModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="shikokuModalLabel">
+                  <h2 style="color: red;">四国代表</h2>
+                </h5>
+                <button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="#" method="POST">
+              <div class="modal-body" th:object="${favNine[7]}">
+                <p class="card-text" th:text="*{prefectureName}"></p>
+                <p class="card-text" th:text="*{makerName}"></p>
+                <p class="card-text" th:text="*{merchName}"></p>
+
+                <small class="text-muted" th:if="*{merchId}">注文可能</small>
+              </div>
+              <div class="modal-footer">
+                <div class="spinner_area">
+                  <form action="addCart" th:object="${cartFormShikoku}">
+                  <input type="hidden" th:field="*{merchId}">
+                  <input value="1" class="counter1" data-max="10" data-min="1" th:field="*{quantity}">
+                  <input type="button" value="－"
+                    class="btnspinner" data-cal="-1" data-target=".counter1">
+                  <input type="button" value="＋" class="btnspinner" data-cal="1"
+                    data-target=".counter1">
+                  <button type="submit" class="btn btn-warning">カートに入れる</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">推し変する</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
+
+        <div class="card-body">
+          <p class="card-text">
+          <h4>四国代表</h4>
+          </p>
+          <p class="card-text"></p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 九州 -->
+    <div class="col">
+      <div class="card shadow-sm" id="prefecture">
+        <div>
+          <img src="images/japan/kyushu.png" class="nine">
+        </div>
+
+        <!-- Image trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#Kyushu"> <img
+          th:src="@{/images/merch/{merchId}/1.jpg(merchId=${favNine[8].merchId})}" class="img-thumbnail"
+          id="prefecture-img">
+        </a>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="Kyushu" tabindex="-1"
+          aria-labelledby="kyushuModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="kyushuModalLabel">
+                  <h2 style="color: red;">九州代表</h2>
+                </h5>
+                <button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="#" method="POST">
+              <div class="modal-body" th:object="${favNine[8]}">
+                <p class="card-text" th:text="*{prefectureName}"></p>
+                <p class="card-text" th:text="*{makerName}"></p>
+                <p class="card-text" th:text="*{merchName}"></p>
+
+                <small class="text-muted" th:if="*{merchId}">注文可能</small>
+              </div>
+              <div class="modal-footer">
+                <div class="spinner_area">
+                  <form action="addCart" th:object="${cartFormKyushu}">
+                  <input type="hidden" th:field="*{merchId}">
+                  <input value="1" class="counter1" data-max="10" data-min="1" th:field="*{quantity}">
+                  <input type="button" value="－"
+                    class="btnspinner" data-cal="-1" data-target=".counter1">
+                  <input type="button" value="＋" class="btnspinner" data-cal="1"
+                    data-target=".counter1">
+                  <button type="submit" class="btn btn-warning">カートに入れる</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">推し変する</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+
+        <div class="card-body">
+          <p class="card-text">
+          <h4>九州代表</h4>
+          </p>
+          <p class="card-text"></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

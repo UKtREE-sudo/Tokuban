@@ -1,0 +1,208 @@
+/* フォント */
+* {
+    font-family: "Noto Sans JP";
+}
+
+h1, h2, h3, h4, h5, h6, .mPlus{
+    font-family: "M PLUS Rounded 1c";
+}
+
+.navbar {
+    margin: auto;
+    padding: 0;
+}
+
+.top-banner {
+    margin-bottom: 80px;
+    padding-bottom: 80px;
+}
+
+.banner {
+    width: 95%;
+}
+
+.shadow {
+    float: left;
+    width: 100%;
+    margin: auto;
+}
+
+/* 周東追記分ここから */
+.navbar-brand {
+    padding-left: 5%;
+}
+
+.dropdown {
+    padding-right: 5%;
+}
+
+.dropdown-menu.left {
+    left:auto;
+    right:0;
+}
+
+.dropdown-menu.left::before {
+    left:auto !important;
+    right:9px;
+}
+.dropdown-menu.left::after {
+    left:auto !important;
+    right:10px;
+}
+
+button {
+    display: inline;
+}
+
+.cart {
+    margin-left: 1%;
+}
+
+i.fa-shopping-cart {
+    height: 100%;
+}
+
+.carousel-inner {
+    margin: 5% 0;
+}
+
+.right {
+    text-align: right;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* カテゴリ選択のやつここから */
+
+.cp_ipselect {
+	overflow: hidden;
+	width: 20%;
+	margin: auto;
+	text-align: center;
+}
+.cp_ipselect select {
+	width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.cp_ipselect select::-ms-expand {
+    display: none;
+}
+.cp_ipselect.cp_sl01 {
+	position: relative;
+	border: 1px solid #bbbbbb;
+	border-radius: .25rem;
+	background: #ffffff;
+}
+.cp_ipselect.cp_sl01::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.9em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #666666;
+	pointer-events: none;
+}
+.cp_ipselect.cp_sl01 select {
+	padding: 8px 38px 8px 8px;
+	color: #666666;
+}
+/* カテゴリ選択のやつここまで */
+
+.header-container{
+    border: none;
+    height: 6rem;
+    margin-bottom: 0 !important;
+}
+
+.container {
+    margin-top: 6rem;
+}
+
+div.cart-img {
+    width: 100%;
+}
+/* 周東追記分ここまで */
+
+
+.slide {
+    margin-top: 30px;
+}
+
+.sidebar {
+    position: sticky;
+    top     : 9rem;
+}
+
+main {
+    width: 100%;
+}
+
+/*
+ * Footer
+ */
+ .blog-footer {
+    padding: 2.5rem 0;
+    color: #727272;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+  }
+  .blog-footer p:last-child {
+    margin-bottom: 0;
+  }
+
+  img.footer {
+      width: 100px;
+      height: auto;
+  }
+
+  /*PAGE TOP（↑）設定　by小野
+---------------------------------------------------------------------------*/
+@keyframes scroll {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+    /*通常時のボタンは非表示*/
+    body .nav-fix-pos-pagetop a {
+        display: none;
+    }
+    /*fixmenu_pagetop.jsで設定している設定値になったら出現するボタンスタイル*/
+    body.is-fixed-pagetop .nav-fix-pos-pagetop a {
+        display: block;text-decoration: none;text-align: center;z-index: 100;position: fixed;animation-name: scroll;animation-duration: 1s;animation-fill-mode: forwards;
+        width: 40px;		/*ボタンの幅*/
+        line-height: 40px;	/*ボタンの高さ*/
+        bottom: 20px;		/*ウィンドウの下から20pxの場所に配置*/
+        right: 3%;			/*ウィンドウの右から3%の場所に配置*/
+        background: #ffc107;	/*背景色*/
+        color: black;
+        border-radius: 50%;
+    }
+    /*マウスオン時の背景色*/
+    body.is-fixed-pagetop .nav-fix-pos-pagetop a:hover {
+        background: black;
+        color: #ffc107;
+    }
+
+.pagetop {
+    text-decoration: none;
+}

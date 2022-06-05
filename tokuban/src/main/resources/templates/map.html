@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+
+<body class="p-3 mb-2 bg-light text-dark">
+  <div th:fragment="map">
+  <!-- マップ -->
+  <table id="clickable_map" cellspacing="1"
+  class="p-3 mb-2 bg-light text-dark">
+  <tr style="background-color: transparent;">
+    <td colspan="3" style="background-color: transparent;">
+      <button class="btn btn-warning" type="button"
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample" style="text-align: center;">
+        実績を見る</button>
+    </td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td colspan=2 id="hokkaido" class="char3"><a
+      href="/wip" th:class="${pLevel[1]}">北<br>海<br>道
+    </a></td>
+  </tr>
+  <tr class="p-3 mb-2 bg-light text-dark"
+    style="background-color: transparent;">
+    <td id="dummy" colspan=13
+      style="height: 2px; line-height: 2px; background-color: transparent;"></td>
+  </tr>
+  <tr>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td colspan=2 class="colspan_2"><a href="/wip"
+      th:class="${pLevel[2]}">青<br>森
+    </a></td>
+  </tr>
+  <tr>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td><a href="/wip" th:class="${pLevel[3]}">秋<br>田
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[4]}">岩<br>手
+    </a></td>
+  </tr>
+  <tr>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td rowspan=2 class="rowspan_2"><a href="/wip"
+      th:class="${pLevel[17]}">石<br>川
+    </a></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td><a href="/wip" th:class="${pLevel[5]}">山<br>形
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[6]}">宮<br>城
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="/wip" th:class="${pLevel[47]}">沖<br>縄
+    </a></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td><a href="/wip" th:class="${pLevel[16]}">富<br>山
+    </a></td>
+    <td colspan=2 class="colspan_2"><a href="/wip"
+      th:class="${pLevel[15]}">新<br>潟
+    </a></td>
+    <td colspan=2 class="colspan_2"><a href="/wip"
+      th:class="${pLevel[7]}">福<br>島
+    </a></td>
+  </tr>
+  <tr>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td><a href="/wip" th:class="${pLevel[18]}">福<br>井
+    </a></td>
+    <td rowspan=2 class="rowspan_2"><a href="/wip"
+      th:class="${pLevel[20]}">岐<br>阜
+    </a></td>
+    <td rowspan=2 class="rowspan_2"><a href="/wip"
+      th:class="${pLevel[19]}">長<br>野
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[10]}">群<br>馬
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[9]}">栃<br>木
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[8]}">茨<br>城
+    </a></td>
+  </tr>
+  <tr>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td><a href="/wip" th:class="${pLevel[32]}">島<br>根
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[31]}">鳥<br>取
+    </a></td>
+    <td rowspan=2 class="rowspan_2"><a href="/wip"
+      th:class="${pLevel[30]}">兵<br>庫
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[25]}">京<br>都
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[24]}">滋<br>賀
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[21]}">山<br>梨
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[11]}">埼<br>玉
+    </a></td>
+    <td rowspan=2 class="rowspan_2"><a href="/wip"
+      th:class="${pLevel[13]}">千<br>葉
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="/wip" th:class="${pLevel[41]}">佐<br>賀
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[40]}">福<br>岡
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[35]}">山<br>口
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[34]}">広<br>島
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[33]}">岡<br>山
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[26]}">大<br>阪
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[27]}">奈<br>良
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[23]}">愛<br>知
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[22]}">静<br>岡
+    </a></td>
+    <td class="char3"><a href="/wip" th:class="${pLevel[14]}">神<br>奈<br>川
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[12]}">東<br>京
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="/wip" th:class="${pLevel[42]}">長<br>崎
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[44]}">大<br>分
+    </a></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td class="char3"><a href="/wip" th:class="${pLevel[29]}">和<br>歌<br>山
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[28]}">三<br>重
+    </a></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+  </tr>
+  <tr>
+    <td><a href="/wip" th:class="${pLevel[43]}">熊<br>本
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[46]}">宮<br>崎
+    </a></td>
+    <td style="background-color: transparent;"></td>
+    <td><a href="/wip" th:class="${pLevel[38]}">愛<br>媛
+    </a></td>
+    <td><a href="/wip" th:class="${pLevel[36]}">香<br>川
+    </a></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+  </tr>
+  <tr>
+    <td colspan=2 class="colspan_2 char3"><a href="/wip" th:class="${pLevel[45]}">鹿<br>児<br>島</a></td>
+    <td style="background-color: transparent;"></td>
+    <td><a href="/wip" th:class="${pLevel[39]}">高<br>知</a></td>
+    <td><a href="/wip" th:class="${pLevel[37]}">徳<br>島</a></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+    <td style="background-color: transparent;"></td>
+  </tr>
+</table>
+
+							<!-- 実績 -->
+							<div class="offcanvas offcanvas-start" tabindex="-1"
+								id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
+								<div class="offcanvas-body">
+									<h5>実績</h5>
+									<div>
+										実績を解除して実績ポイントをもらおう！ <br> <br>
+									</div>
+									<ul class="list-group" th:each="achievement : ${achievementBoard}">
+                    <form action="/receiveAP" method="GET">
+										<li class="list-group-item d-flex justify-content-between align-items-center">
+                      <!-- レイアウトおかしいけど許してください -->
+                      <p th:text="${achievement[0]}"></p>
+											<input type="submit" class="btn btn-secondary" th:value="${achievement[1]}"></input>
+										</li>
+                    </form>
+									</ul>
+								</div>
+								<!-- offcanvas-body -->
+							</div>
+							<!-- offcanvas(左側に出てくる実績のやつ) -->
+            </div>
+</body>
+</html>

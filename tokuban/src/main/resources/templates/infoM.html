@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- 全ページ共通ここから -->
+
+  <!-- おまじない -->
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" th:href="@{/image/toku.png}">
+
+  <!-- bootstrap: CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- bootstrap: JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <!-- Fontawesome: JavaScript Bundle with Popper -->
+  <script src="https://kit.fontawesome.com/ba93ae2070.js" crossorigin="anonymous"></script>
+
+  <!-- Fontawesome -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <!-- JavaScript -->
+  <script th:src="@{/js/function fm_hasClass(e, c).js}"></script>
+<meta charset="UTF-8">
+<meta name="author" content="周東">
+</head>
+<body>
+	<div th:fragment="infoM">
+		<form>
+					<table th:object="${infoMForm}">
+					<!-- 登録したユーザー情報を表示 ：コガハラ 修正-->
+								<tr>
+										<th>実績レベル</th>
+										<td><img class="avatar" th:src="@{/images/avatar/avatarLv{achievementLevel}.png(achievementLevel=${achievementLevel})}"
+										alt="アバター"></td>
+										<td>
+												<div class="baloon" th:inline="text">
+														現在はレベル[[${achievementLevel}]]<br>次のレベルまで<br>あと?ポイント！
+												</div>
+										</td>
+								</tr>
+								<tr>
+									<th>会員ランク</th>
+									<span th:if="${isPremium}">
+										<td colspan="2">プレミアム会員</td>
+									</span>
+									<span th:unless="${isPremium}">
+										<td colspan="2">一般会員
+											（<a href="/upgrade">プレミアム会員へアップグレード</a>）
+										</td>
+									</span>
+								</tr>
+								<tr>
+										<th>メールアドレス</th>
+										<td colspan="2" th:text="*{mailAddress}"></td>
+								</tr>
+								<tr>
+										<th>パスワード</th>
+										<td colspan="2">パスワードは表示できません</td>
+								</tr>
+								<tr>
+										<th>表示名</th>
+										<td colspan="2" th:text="*{nickname}"></td>
+								</tr>
+
+								<!-- 登録した配送情報を表示 ：高根 修正/ 小河原修正 2021/06/26 14:53-->
+								<tr>
+										<th>配送情報①</th>
+										<td colspan="2">
+												<div class="shadow-sm p-3 mb-5 bg-body rounded added-address" th:if="${address1}">
+														<div class="left">
+																<p class="address">
+																		<strong th:text="${address1.toName}"></strong>
+																</p>
+																<p class="address" th:text="${address1.zipcode}"></p>
+																<p class="address" th:text="${address1.addressCore}"></p>
+																<p class="address" th:text="${address1.addressBuilding}"></p>
+														</div>
+														<div class="left">
+																<a th:href="@{/mypage/showFormForUpdate1}">
+																		<button type="button" class="btn btn-outline-dark">編集</button>
+																</a>
+																<a th:href="@{/mypage/delete1}"
+																onclick="if (!(confirm('Are you sure you want to delete this address?'))) return false">
+																		<button type="button" class="btn btn-outline-dark">削除</button>
+																</a>
+														</div>
+												</div>
+												<div class="shadow-sm p-3 mb-5 bg-body rounded added-address" th:unless="${address1}">
+														<div class="left">
+																<p class="address">
+																		<strong>設定されていません</strong>
+																</p>
+																<p class="address">設定されていません</p>
+																<p class="address">設定されていません</p>
+																<p class="address">設定されていません</p>
+														</div>
+														<div class="left">
+																<a th:href="@{/mypage/showFormForUpdate1}">
+																		<button type="button" class="btn btn-outline-dark">登録</button>
+																</a>
+																<a th:href="@{/mypage/delete1}"
+																onclick="if (!(confirm('Are you sure you want to delete this address?'))) return false">
+																		<button type="button" class="btn btn-outline-dark">削除</button>
+																</a>
+														</div>
+												</div>
+												
+										</td>
+								</tr>
+
+
+								<tr>
+										<th>配送情報②</th>
+										<td colspan="2">
+												<div class="shadow-sm p-3 mb-5 bg-body rounded added-address" th:if="${address2}")>
+														<div class="left">
+																<p class="address">
+																		<strong th:text="${address2.toName}"></strong>
+																</p>
+																<p class="address" th:text="${address2.zipcode}"></p>
+																<p class="address" th:text="${address2.addressCore}"></p>
+																<p class="address" th:text="${address2.addressBuilding}"></p>
+														</div>
+
+														<div class="left">
+																<a th:href="@{/mypage/showFormForUpdate2}">
+																		<button type="button" class="btn btn-outline-dark">編集</button>
+																</a>
+																<a th:href="@{/mypage/delete2}"
+																onclick="if (!(confirm('Are you sure you want to delete this address?'))) return false">
+																		<button type="button" class="btn btn-outline-dark">削除</button>
+																</a>
+														</div>
+												</div>
+												<div class="shadow-sm p-3 mb-5 bg-body rounded added-address" th:unless="${address2}">
+														<div class="left">
+																<p class="address">
+																		<strong>設定されていません</strong>
+																</p>
+																<p class="address">設定されていません</p>
+																<p class="address">設定されていません</p>
+																<p class="address">設定されていません</p>
+														</div>
+														<div class="left">
+																<a th:href="@{/mypage/showFormForUpdate2}">
+																		<button type="button" class="btn btn-outline-dark">登録</button>
+																</a>
+																<a th:href="@{/mypage/delete2}"
+																onclick="if (!(confirm('Are you sure you want to delete this address?'))) return false">
+																		<button type="button" class="btn btn-outline-dark">削除</button>
+																</a>
+														</div>
+												</div>
+										</td>
+								</tr>
+								<!-- 配送情報ここまで -->
+								<tr>
+										<th>生年月日</th>
+										<td colspan="2" th:inline="text">
+											[[*{birthYear}]]年 
+											[[*{birthMonth}]]月 
+											[[*{birthDate}]]日
+										</td>
+								</tr>
+								<tr></tr>
+
+								<tr>
+									<th colspan="3" class="right"><a href="/editInfoM">会員情報を編集する</a></th>
+								</tr>
+								<tr style="height: 30rem"></tr>
+								<tr>
+										<th><a href="/resignCheck" class="disabled">退会する</a></th>
+								</tr>
+
+						</table>
+				</form>
+		</div>
+		<!-- tab_content_description -->
+
+
+</body>
+</html>
