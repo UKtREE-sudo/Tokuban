@@ -16,7 +16,7 @@ import jp.co.bungeejump.tokuban.entity.real.TAchievement;
 
 /**
  * マップとか実績とかその辺
- * @author 周東
+ * @author 小河原
  * @version 0.2.1
  */
 @Service

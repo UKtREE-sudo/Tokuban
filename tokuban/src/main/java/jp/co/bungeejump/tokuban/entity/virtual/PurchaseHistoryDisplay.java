@@ -2,7 +2,7 @@ package jp.co.bungeejump.tokuban.entity.virtual;
 
 /**
  * 購入履歴表示用
- * @author 小河原 / 周東
+ * @author 小河原
  * @version 0.1.0
  */
 

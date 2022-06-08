@@ -23,7 +23,7 @@ import jp.co.bungeejump.tokuban.form.PurchaseHistoryForm;
 
 /**
 *
-* @author 小河原 / 周東 / 末永
+* @author 小河原
 * @version 0.2.1
 *
 */

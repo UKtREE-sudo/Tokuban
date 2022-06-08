@@ -10,7 +10,7 @@ import jp.co.bungeejump.tokuban.entity.real.TSettlement;
 
 /**
  * t_settlement用のdao
- * @author 小河原 / 周東
+ * @author 小河原
  * @version 0.2.0
  */
 @Repository

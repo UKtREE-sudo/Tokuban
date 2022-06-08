@@ -16,7 +16,7 @@ import jp.co.bungeejump.tokuban.service.AddressService;
 
 /**
  * 住所関係
- * @author 大野/ 小河原()
+ * @author 小河原
  * @version 0.0.2
  */
 @Controller
@@ -124,12 +124,4 @@ public class AddressController {
 		
 		return "redirect:/mypage";
 	}
-
-	//他にもなんかあったかも
-	
-	// 住所編集メソッド
-
-	//遷移元のURLを取得して処理後そこにforward（多分）
-
-	//（CartとかFavoriteNineとかでも同じことやってるので適宜相談を）
 }

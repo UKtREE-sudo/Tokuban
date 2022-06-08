@@ -7,7 +7,7 @@ import jp.co.bungeejump.tokuban.entity.real.VMerch;
 /**
  * v_merch用のdao
  * <p>基本的にIDによる検索しかやらないはず</p>
- * @author 周東/ 小河原
+ * @author 周東
  * @version 0.0.1
  */
 public interface VMerchDao extends JpaRepository<VMerch, Integer>{

@@ -101,28 +101,4 @@ public class SearchServiceImpl implements SearchService {
 		return regionMerch;
 	}
 
-	/**
-	 * 商品詳細を取得するメソッド
-	 * <p>もう眠いのでEntityとかDaoも頑張って考えてほしい。寝て起きて元気になってたら相談乗るので…<br>
-	 * いつも大変な仕事ばっかり押し付けて本当にすみません。</p>
-	 * @return 商品詳細
-	 *//*
-		public MerchDetail getMerchDetail(Integer merchId) {
-
-		MerchDetail merchDetail = mdDao.findByMerchDetail(merchId);
-
-		return merchDetail;
-		}*/
-
-	/**
-	 * 星集計用のメソッド 小河原一時コメントアウト
-	 * @return おすすめ度の毎の集計結果
-
-	public List<Star> getStar(Integer merchId){
-
-		List<Star> countStar = mdDao.CountStarByMerchId(merchId);
-
-		return countStar;
-	}*/
-
 }

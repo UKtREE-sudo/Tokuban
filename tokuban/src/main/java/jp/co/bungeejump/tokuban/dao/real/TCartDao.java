@@ -26,8 +26,6 @@ public interface TCartDao extends JpaRepository<TCart, TCartPK> {
 	//ユーザーIDで検索かけて全権取得するメソッド
 	List<TCart> findByUserId(int userId);
 
-	//データ追加はsaveなので書かなくていい・・・？
-
 	@Transactional
 	@Modifying
 	@Query("delete from TCart o where o.userId = :userId and o.merchId = :merchId")

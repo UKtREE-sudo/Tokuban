@@ -16,7 +16,7 @@ import jp.co.bungeejump.tokuban.dao.real.TokubanJdbcDaoImpl;
 
 /**
  * 認証用
- * @author 周東
+ * @author 小河原
  * @version 0.2.0
  */
 @EnableWebSecurity
@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	private DataSource dataSource;
 
 
-	// ログイン情報をDBから持ってくる用。
+	// ログイン情報をDBから持ってくる用
 	//private static final String USER_QUERY = "SELECT mail_address, password, TRUE FROM member WHERE mail_address = ?";
 	private static final String USER_QUERY = "SELECT mail_address, password, user_id FROM m_user WHERE mail_address = ? AND is_active = true";
 	private static final String ROLES_QUERY = "SELECT mail_address, role FROM m_user WHERE mail_address = ?";

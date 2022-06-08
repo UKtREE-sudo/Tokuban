@@ -9,7 +9,7 @@ import jp.co.bungeejump.tokuban.entity.real.TPurchase;
 
 /**
  * t_purchase用のdao
- * @author 小河原 / 周東
+ * @author 小河原
  * @version 0.2.0
  */
 public interface TPurchaseDao extends JpaRepository<TPurchase, Integer> {

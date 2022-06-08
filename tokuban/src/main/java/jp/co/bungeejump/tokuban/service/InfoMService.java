@@ -5,7 +5,7 @@ import jp.co.bungeejump.tokuban.form.InfoMForm;
 
 /**
  * 会員情報を色々する
- * @author 周東 / ちょっと小河原
+ * @author 周東
  * @version 0.3.0
  */
 

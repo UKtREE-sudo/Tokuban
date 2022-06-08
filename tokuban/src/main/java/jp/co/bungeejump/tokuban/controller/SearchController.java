@@ -35,10 +35,6 @@ public class SearchController {
 			e.printStackTrace();
 		}
 
-		/*List<VMerch> merchList = searchService.searchOnHeader(serchForm.getCategory(), serchForm.getInputText());
-		model.addAttribute("merchList", merchList);*/
-
-		//System.out.println(merchList.get(0));
 		//遷移先
 		return "searchAll";
 	}
@@ -68,22 +64,5 @@ public class SearchController {
 		return "searchAll";
 
 	}
-
-	//小河原一時コメントアウト
-	/*@RequestMapping(value = "/merchDetail", method = RequestMethod.POST)
-	public String merchDetail(SearchForm serchForm, Model model) {
-
-		//検索結果のIDを取得し商品詳細を送る
-		MerchDetail merchDetail = searchService.getMerchDetail(serchForm.getMerchId());
-		model.addAttribute("merchDetail", merchDetail);
-
-		//星の数を送る
-		List<Star> starList = searchService.getStar(serchForm.getMerchId());
-		model.addAttribute("starList", starList);
-
-		//遷移先
-		return "merchDetail";
-
-	}*/
 
 }

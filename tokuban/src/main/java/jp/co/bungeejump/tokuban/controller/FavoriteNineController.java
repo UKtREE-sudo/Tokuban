@@ -16,7 +16,7 @@ import jp.co.bungeejump.tokuban.service.FavoriteNineService;
 
 /**
  * だいすきナイン関係
- * @author 末永？
+ * @author 末永
  * @version 0.0.1
  *
  */
@@ -55,5 +55,4 @@ public class FavoriteNineController {
 		return request.getHeader("REFERER").substring(30);
 	}
 
-	//マイページでだいすきナインを表示するのはMypageControllerな気がする
 }

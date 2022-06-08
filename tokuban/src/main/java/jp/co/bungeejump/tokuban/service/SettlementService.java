@@ -61,29 +61,6 @@ public interface SettlementService {
 	 */
 	public void insertPurchaseHistory(List<CartForm> purchasedMerchList, Integer settlementId);
 
-/*	使わなそう
-
-	//　↓ 通常CRUDメソッド for VMerch.java ※使うかは不明 ↓
-	public List<VMerch> VMerchFindAll();
-	public VMerch VMerchFindById(Integer merchId);
-	public void VMerchSave(VMerch vMerch);
-	public void VMerchDeleteById(Integer merchId);
-	// ↑ 通常CRUDメソッド for VMerch.java ※使うかは不明 ↑
-
-	//　↓ 通常CRUDメソッド for TPurchase.java ※使うかは不明 ↓
-	public List<VMerch> TPurchaseFindAll();
-	public VMerch TPurchaseFindById(Integer merchId);
-	public void TPurchaseSave(VMerch vMerch);
-	public void TPurchaseDeleteById(Integer merchId);
-	// ↑ 通常CRUDメソッド for TPurchase.java ※使うかは不明 ↑
-
-	//　↓ 通常CRUDメソッド for TSettlement.java ※使うかは不明 ↓
-	public List<VMerch> TSettlementFindAll();
-	public VMerch TSettlementFindById(Integer merchId);
-	public void TSettlementSave(VMerch vMerch);
-	public void TSettlementDeleteById(Integer merchId);
-	// ↑ 通常CRUDメソッド for TSettlement.java ※使うかは不明 ↑
-*/
 }
 
 

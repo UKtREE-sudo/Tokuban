@@ -37,10 +37,6 @@ public interface CartService {
 	 */
 	public List<CartForm> deleteFromCart(Integer userId, Integer merchId);
 
-	// 決済ボタン押したらその時点で入力されている個数をカートテーブルに反映させるやり方、
-	// 全く思いつかなかったので頑張ってください。
-	// thymeleaf使ってなんかやればいける…？
-
 	/**
 	 * ユーザーIDを指定してカートの全ての情報を削除するメソッド
 	 * @param userId

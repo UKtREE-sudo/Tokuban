@@ -21,7 +21,7 @@ import jp.co.bungeejump.tokuban.form.InfoMForm;
 
 /**
  * 会員情報に関連するサービスを提供します
- * @author 周東 / ちょっと小河原
+ * @author 小河原
  * @version 0.3.0
  */
 @Service

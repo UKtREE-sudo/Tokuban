@@ -26,7 +26,7 @@ import jp.co.bungeejump.tokuban.service.SettlementService;
 
 /**
  * マイページ関連
- * @author 小河原(会員情報取得) / ちょっと周東
+ * @author 小河原(会員情報取得) / 周東
  * @version 0.3.0
  */
 @SessionAttributes({"infoMForm", "achievementLevel"})

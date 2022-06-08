@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 /**
  * v_merch用のentity
- * @author 周東/ 小河原
+ * @author 小河原
  * @version 0.0.2
  */
 @Entity

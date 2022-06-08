@@ -19,32 +19,12 @@ import jp.co.bungeejump.tokuban.entity.virtual.VMerchCategory;
 @Repository
 public interface MerchDetailDao extends JpaRepository<MerchDetail, Integer> {
 
-	//IDを指定して必要な情報を取得できればおk。
-	//必要な情報（カラム）はMerchDetailのフィールドにする。
-	//多分クエリ書sかないといけないのと、食品とお酒のテーブルが違う問題が大変だと思うので頑張ってほしい（無責任）
-
-	//List<VMerchCategory> findBymerchId(Integer merch_id);
-
 	List<VMerch> findByRegionId(Integer regionId);
 
 	//商品詳細 小河原修正済み
-	/*@Modifying
+	@Modifying
 	@Query("select c from MerchDetail c where c.merch_id = :merch_id")
-	public MerchDetail findByMerchDetail(Integer merch_id);*/
-
-	//星の集計 小河原一時コメントアウト
-	//t_purchase、Starを参照しているけど高根担当のためここに入れてます
-	/*@Modifying
-	@Query("select 1 as 'star', count(*) as 'count' from t_purchase where merch_id = ?1 and r_star = 1 " +
-			"union " +
-			"select 2 as 'star', count(*) as 'count' from t_purchase where merch_id = ?1 and r_star = 2 " +
-			"union " +
-			"select 3 as 'star', count(*) as 'count' from t_purchase where merch_id = ?1 and r_star = 3 " +
-			"union " +
-			"select 4 as 'star', count(*) as 'count' from t_purchase where merch_id = ?1 and r_star = 4 " +
-			"union " +
-			"select 5 as 'star', count(*) as 'count' from t_purchase where merch_id = ?1 and r_star = 5")
-	public List<Star> CountStarByMerchId(Integer merchId);*/
+	public MerchDetail findByMerchDetail(Integer merch_id);
 
 	//カテゴリーと商品名（全て以外）検索クエリ 小河原修正済み
 	@Modifying
@@ -70,11 +50,6 @@ public interface MerchDetailDao extends JpaRepository<MerchDetail, Integer> {
 	@Modifying
 	@Query(value = "select * from v_merch_category c where c.category_name = ?1", nativeQuery = true)
 	public List<VMerchCategory> findByCategory(String category);
-
-	/*//商品名検索 小河原修正済み
-	@Modifying
-	@Query("select c from VMerchCategory c where c.merchName like %:merchName%")
-	public List<VMerchCategory> findByMerch(String merchName);*/
 
 	//商品名検索 小河原修正済み
 		@Query("select v from VMerch v where v.merchName like %?1%")

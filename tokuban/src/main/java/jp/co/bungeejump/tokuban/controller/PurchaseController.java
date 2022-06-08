@@ -126,28 +126,6 @@ public class PurchaseController {
 			max = sum / 500;
 		}
 
-		/*何やってるのか分からん
-		List<VMerch> vmerchList = new ArrayList<>();
-		Integer[] quantityArray = new Integer[cartList.size()];
-		int i = 0;
-
-		for (CartForm cart : cartList) {
-
-			vmerchList.add(vmDao.getById(cart.getMerchId()));
-			quantityArray[i] = cart.getQuantity();
-			i++;
-		}
-
-		int sum = 0;
-
-		i = 0;
-
-		for (VMerch vm : vmerchList) {
-			sum += vm.getBasePrice() * quantityArray[i];
-			i++;
-		}
-		*/
-
 		model.addAttribute("sum", sum);
 		model.addAttribute("max", max);
 		model.addAttribute("min", 0);
@@ -160,7 +138,6 @@ public class PurchaseController {
 	public String settlement(@AuthenticationPrincipal MemberDetails memberDetails, Model model,
 			@RequestParam(name = "couponUsing")Integer couponUsing, @ModelAttribute("tAddress")TAddress tAddress) {
 		//クーポン枚数はrequestスコープでいける。商品情報は今回はチェックボックスないのでDBから取得。
-		//配送先idはsessionスコープじゃないといけないのでsubmitするところでちゃんとやって。
 
 		//決済Tに情報を追加し、決済IDを受け取る
 		Integer settlementId = settlementS.makeSettlement(memberDetails.getUserId(), tAddress.getAddressId(), couponUsing);

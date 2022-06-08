@@ -15,7 +15,7 @@ import jp.co.bungeejump.tokuban.service.MFoodService;
 import jp.co.bungeejump.tokuban.service.MLiquorService;
 
 /**
- * topとかwipとか汎用的なやつ。service要らん。
+ * topとかwipとか汎用的な部品
  * @author 小河原
  * @version 0.0.1
  */
